@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vizitka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="750.84">
-    <Grid>
+        Title="MainWindow" Height="576.05" Width="750.84">
+    <Grid x:Name="Core">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="300"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            
+        </Grid>
         
+
     </Grid>
 </Window>

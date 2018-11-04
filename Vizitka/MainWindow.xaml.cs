@@ -23,6 +23,13 @@ namespace Vizitka
         public MainWindow()
         {
             InitializeComponent();
+            Keyboard K = new Keyboard(Core) { Lang = Languages.Rus };
+            Grid.SetRow(K, 1);
+        }
+
+        private void KeyButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
