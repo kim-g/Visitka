@@ -25,6 +25,7 @@ namespace Vizitka
             InitializeComponent();
             Keyboard K = new Keyboard(Core) { Lang = Languages.Rus };
             Grid.SetRow(K, 1);
+            K.InTextBox = TestBox;
         }
 
         private void KeyButton_Click(object sender, RoutedEventArgs e)

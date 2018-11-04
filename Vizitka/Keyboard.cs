@@ -16,14 +16,16 @@ namespace Vizitka
     {
         private Grid Rus;
         private Grid Eng;
-        private Grid Num;
+        private Grid NumEng;
+        private Grid NumRus;
         private Grid Bottom;
         private double _FontSize = 14;
         private Languages _Language = Languages.Rus;
         private bool Shift = false;
         private TextBox _InTextBox;
 
-        private KeyButton[] NumKeys = new KeyButton[12];
+        private KeyButton[] NumEngKeys = new KeyButton[12];
+        private KeyButton[] NumRusKeys = new KeyButton[12];
         private Grid[] RusGrid = new Grid[3];
         private KeyButton[][] RusKeys = new KeyButton[3][];
         private Grid[] EngGrid = new Grid[3];
@@ -40,7 +42,9 @@ namespace Vizitka
             set
             {
                 _FontSize = value;
-                foreach (KeyButton KB in NumKeys)
+                foreach (KeyButton KB in NumEngKeys)
+                    KB.FontSize = _FontSize;
+                foreach (KeyButton KB in NumRusKeys)
                     KB.FontSize = _FontSize;
                 foreach (KeyButton[] KBA in RusKeys)
                     foreach (KeyButton KB in KBA)
@@ -67,10 +71,14 @@ namespace Vizitka
                     case Languages.Rus:
                         Rus.Visibility = Visibility.Visible;
                         Eng.Visibility = Visibility.Collapsed;
+                        NumRus.Visibility = Visibility.Visible;
+                        NumEng.Visibility = Visibility.Collapsed;
                         break;
                     case Languages.Eng:
                         Rus.Visibility = Visibility.Collapsed;
                         Eng.Visibility = Visibility.Visible;
+                        NumRus.Visibility = Visibility.Collapsed;
+                        NumEng.Visibility = Visibility.Visible;
                         break;
                 }
             }
@@ -93,32 +101,54 @@ namespace Vizitka
 
             Rus = new Grid();
             Eng = new Grid();
-            Num = new Grid();
+            NumEng = new Grid();
+            NumRus = new Grid();
             Bottom = new Grid();
-            SetRow(Num, 0);
+            SetRow(NumEng, 0);
+            SetRow(NumRus, 0);
             SetRow(Rus, 1);
             SetRow(Eng, 1);
             SetRow(Bottom, 2);
 
-            for (int i = 0; i<NumKeys.Count(); i++)
+            for (int i = 0; i<NumEngKeys.Count(); i++)
             {
-                Num.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-                NumKeys[i] = new KeyButton();
-                SetColumn(NumKeys[i], i);
-                Num.Children.Add(NumKeys[i]);
+                NumEng.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+                NumEngKeys[i] = new KeyButton();
+                SetColumn(NumEngKeys[i], i);
+                NumEng.Children.Add(NumEngKeys[i]);
             }
-            NumKeys[0].SetLetters("1", "!");
-            NumKeys[1].SetLetters("2", "@");
-            NumKeys[2].SetLetters("3", "#");
-            NumKeys[3].SetLetters("4", "$");
-            NumKeys[4].SetLetters("5", "%");
-            NumKeys[5].SetLetters("6", "^");
-            NumKeys[6].SetLetters("7", "&");
-            NumKeys[7].SetLetters("8", "*");
-            NumKeys[8].SetLetters("9", "(");
-            NumKeys[9].SetLetters("0", ")");
-            NumKeys[10].SetLetters("-", "_");
-            NumKeys[11].SetLetters("=", "+");
+            NumEngKeys[0].SetLetters("1", "!");
+            NumEngKeys[1].SetLetters("2", "@");
+            NumEngKeys[2].SetLetters("3", "#");
+            NumEngKeys[3].SetLetters("4", "$");
+            NumEngKeys[4].SetLetters("5", "%");
+            NumEngKeys[5].SetLetters("6", "^");
+            NumEngKeys[6].SetLetters("7", "&");
+            NumEngKeys[7].SetLetters("8", "*");
+            NumEngKeys[8].SetLetters("9", "(");
+            NumEngKeys[9].SetLetters("0", ")");
+            NumEngKeys[10].SetLetters("-", "_");
+            NumEngKeys[11].SetLetters("=", "+");
+
+            for (int i = 0; i < NumRusKeys.Count(); i++)
+            {
+                NumRus.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+                NumRusKeys[i] = new KeyButton();
+                SetColumn(NumRusKeys[i], i);
+                NumRus.Children.Add(NumRusKeys[i]);
+            }
+            NumRusKeys[0].SetLetters("1", "!");
+            NumRusKeys[1].SetLetters("2", "\"");
+            NumRusKeys[2].SetLetters("3", "№");
+            NumRusKeys[3].SetLetters("4", ";");
+            NumRusKeys[4].SetLetters("5", "%");
+            NumRusKeys[5].SetLetters("6", ":");
+            NumRusKeys[6].SetLetters("7", "?");
+            NumRusKeys[7].SetLetters("8", "*");
+            NumRusKeys[8].SetLetters("9", "(");
+            NumRusKeys[9].SetLetters("0", ")");
+            NumRusKeys[10].SetLetters("-", "_");
+            NumRusKeys[11].SetLetters("=", "+");
 
             RusKeys[0] = new KeyButton[12];
             RusKeys[1] = new KeyButton[11];
@@ -233,12 +263,14 @@ namespace Vizitka
             }
             BottomKeys[0].SetLetters("Shift", "Shift");
             BottomKeys[1].SetLetters("Backspace", "Backspace");
-            BottomKeys[2].SetLetters("", "");
+            BottomKeys[2].SetLetters(" ", " ");
             
             BottomKeys[3].SetLetters("En/Ru", (char)24 + "En/Ru");
             BottomKeys[4].SetLetters("OK", "OK");
 
-            foreach (KeyButton KB in NumKeys)
+            foreach (KeyButton KB in NumEngKeys)
+                KB.Click += KeyButton_Click;
+            foreach (KeyButton KB in NumRusKeys)
                 KB.Click += KeyButton_Click;
             foreach (KeyButton[] KBA in RusKeys)
                 foreach (KeyButton KB in KBA)
@@ -250,7 +282,8 @@ namespace Vizitka
                 KB.Click += KeyButton_Click;
 
 
-            Children.Add(Num);
+            Children.Add(NumEng);
+            Children.Add(NumRus);
             Children.Add(Rus);
             Children.Add(Eng); 
             Children.Add(Bottom);
@@ -265,7 +298,9 @@ namespace Vizitka
             {
                 case "Shift":
                     Shift = !Shift;
-                    foreach (KeyButton KB in NumKeys)
+                    foreach (KeyButton KB in NumEngKeys)
+                        KB.SetShift(Shift);
+                    foreach (KeyButton KB in NumRusKeys)
                         KB.SetShift(Shift);
                     foreach (KeyButton[] KBA in RusKeys)
                         foreach (KeyButton KB in KBA)
@@ -277,12 +312,25 @@ namespace Vizitka
                 case "En/Ru":
                     Lang = Lang == Languages.Eng ? Languages.Rus : Languages.Eng;
                     break;
+                default:
+                    WriteLetter(Out);
+                    break;
             }
         }
 
         public void WriteLetter(string Letter)
         {
+            if (InTextBox == null) return;
 
+            int begin = InTextBox.SelectionStart;
+            int length = InTextBox.SelectionLength;
+
+            InTextBox.Text = InTextBox.Text.Remove(begin, length);
+            if (Letter == "Backspace") InTextBox.Text = InTextBox.Text.Remove(begin-1, 1);
+            else InTextBox.Text = InTextBox.Text.Insert(begin, Letter);
+            InTextBox.Focus();
+            if (Letter == "Backspace") InTextBox.SelectionStart = begin - 1;
+            else InTextBox.SelectionStart = begin + Letter.Length;
         }
     }
 }
