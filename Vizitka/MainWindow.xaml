@@ -5,11 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vizitka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="576.05" Width="750.84">
+        Title="MainWindow" Height="719.747" Width="750.84">
     <Grid x:Name="Core">
-        <TextBox x:Name="TestBox" Margin="217,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
-        <TextBox x:Name="TestBox_Copy" Margin="70,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
-        <TextBox x:Name="TestBox_Copy1" Margin="255,313,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
-        <TextBox x:Name="TestBox_Copy2" Margin="168,438,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
+        <TextBox x:Name="PName" Margin="158,37,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
+        <TextBox x:Name="PCompany" Margin="158,86,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
+        <TextBox x:Name="PJob" Margin="158,139,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
+        <TextBox x:Name="PEMail" Margin="158,195,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
+        <Label Content="ФИО" HorizontalAlignment="Left" Margin="99,41,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Компания" HorizontalAlignment="Left" Margin="65,90,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Должность" HorizontalAlignment="Left" Margin="59,143,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="e-mail" HorizontalAlignment="Left" Margin="91,199,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="PIntagram" Margin="158,249,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
+        <Label Content="Instagram name @" HorizontalAlignment="Left" Margin="31,253,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button Content="СОЗДАТЬ" HorizontalAlignment="Left" Height="88" Margin="31,287,0,0" VerticalAlignment="Top" Width="492" Click="Button_Click"/>
     </Grid>
 </Window>

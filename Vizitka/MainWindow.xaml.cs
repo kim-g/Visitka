@@ -29,6 +29,8 @@ namespace Vizitka
         public MainWindow()
         {
             InitializeComponent();
+            
+
             VirtualKeyboard = new Keyboard(Core)
             {
                 Lang = Languages.Rus,
@@ -49,7 +51,16 @@ namespace Vizitka
             VirtualKeyboard.Show((TextBox)sender);
         }
 
-        
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Visit V1 = new Visit(Core)
+            {
+                PersonName = PName.Text,
+                PersonCompany = PCompany.Text,
+                PersonJob = PJob.Text,
+                PersonEMail = PEMail.Text,
+                PersonInstagram = PIntagram.Text
+            };
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace Vizitka
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(Text, QRCodeGenerator.ECCLevel.L);
             QRCode qrCode = new QRCode(qrCodeData);
-            return ImageSourceForBitmap(qrCode.GetGraphic(40));
+            return ImageSourceForBitmap(qrCode.GetGraphic(200, "#000000", "#FFFFFF", false));
         }
     }
 }
