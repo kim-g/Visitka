@@ -7,14 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="576.05" Width="750.84">
     <Grid x:Name="Core">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="300"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <TextBox x:Name="TestBox"/>
-        </Grid>
-        
-
+        <TextBox x:Name="TestBox" Margin="217,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
+        <TextBox x:Name="TestBox_Copy" Margin="70,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
+        <TextBox x:Name="TestBox_Copy1" Margin="255,313,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
+        <TextBox x:Name="TestBox_Copy2" Margin="168,438,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
     </Grid>
 </Window>

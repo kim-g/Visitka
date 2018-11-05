@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+﻿using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Vizitka
 {
@@ -22,7 +16,6 @@ namespace Vizitka
         private double _FontSize = 14;
         private Languages _Language = Languages.Rus;
         private bool Shift = false;
-        private TextBox _InTextBox;
 
         private KeyButton[] NumEngKeys = new KeyButton[12];
         private KeyButton[] NumRusKeys = new KeyButton[12];
@@ -87,18 +80,24 @@ namespace Vizitka
         /// <summary>
         /// Элемент, в который вносятся изменения
         /// </summary>
-        public TextBox InTextBox
-        {
-            get { return _InTextBox; }
-            set { _InTextBox = value; }
-        }
+        public TextBox InTextBox { get; set; }
 
+        /// <summary>
+        /// Создать виртуальную клавиатуру и привязать её к панели на форме
+        /// </summary>
+        /// <param name="Core">Панель-родитель.</param>
         public Keyboard(Panel Core)
         {
+            // Размещение слева сверху для улучшенного позиционирования
+            HorizontalAlignment = HorizontalAlignment.Left;
+            VerticalAlignment = VerticalAlignment.Top;
+
+            // Добавим слои символов
             RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
             RowDefinitions.Add(new RowDefinition() { Height = new GridLength(3, GridUnitType.Star) });
             RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
 
+            // Создадим панели кнопок
             Rus = new Grid();
             Eng = new Grid();
             NumEng = new Grid();
@@ -110,26 +109,17 @@ namespace Vizitka
             SetRow(Eng, 1);
             SetRow(Bottom, 2);
 
-            for (int i = 0; i<NumEngKeys.Count(); i++)
+            // Заполним кнопками цифровую английскую панель
+            for (int i = 0; i < NumEngKeys.Count(); i++)
             {
                 NumEng.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
                 NumEngKeys[i] = new KeyButton();
                 SetColumn(NumEngKeys[i], i);
                 NumEng.Children.Add(NumEngKeys[i]);
             }
-            NumEngKeys[0].SetLetters("1", "!");
-            NumEngKeys[1].SetLetters("2", "@");
-            NumEngKeys[2].SetLetters("3", "#");
-            NumEngKeys[3].SetLetters("4", "$");
-            NumEngKeys[4].SetLetters("5", "%");
-            NumEngKeys[5].SetLetters("6", "^");
-            NumEngKeys[6].SetLetters("7", "&");
-            NumEngKeys[7].SetLetters("8", "*");
-            NumEngKeys[8].SetLetters("9", "(");
-            NumEngKeys[9].SetLetters("0", ")");
-            NumEngKeys[10].SetLetters("-", "_");
-            NumEngKeys[11].SetLetters("=", "+");
+            NumEngLetters();
 
+            // Заполним кнопками цифровую русскую панель
             for (int i = 0; i < NumRusKeys.Count(); i++)
             {
                 NumRus.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
@@ -137,19 +127,9 @@ namespace Vizitka
                 SetColumn(NumRusKeys[i], i);
                 NumRus.Children.Add(NumRusKeys[i]);
             }
-            NumRusKeys[0].SetLetters("1", "!");
-            NumRusKeys[1].SetLetters("2", "\"");
-            NumRusKeys[2].SetLetters("3", "№");
-            NumRusKeys[3].SetLetters("4", ";");
-            NumRusKeys[4].SetLetters("5", "%");
-            NumRusKeys[5].SetLetters("6", ":");
-            NumRusKeys[6].SetLetters("7", "?");
-            NumRusKeys[7].SetLetters("8", "*");
-            NumRusKeys[8].SetLetters("9", "(");
-            NumRusKeys[9].SetLetters("0", ")");
-            NumRusKeys[10].SetLetters("-", "_");
-            NumRusKeys[11].SetLetters("=", "+");
+            NumRusLetters();
 
+            // Заполним кнопками буквенную русскую панель
             RusKeys[0] = new KeyButton[12];
             RusKeys[1] = new KeyButton[11];
             RusKeys[2] = new KeyButton[10];
@@ -168,40 +148,9 @@ namespace Vizitka
                     RusGrid[i].Children.Add(RusKeys[i][j]);
                 }
             }
-            RusKeys[0][0].SetLetters("й", "Й");
-            RusKeys[0][1].SetLetters("ц", "Ц");
-            RusKeys[0][2].SetLetters("у", "У");
-            RusKeys[0][3].SetLetters("к", "К");
-            RusKeys[0][4].SetLetters("е", "Е");
-            RusKeys[0][5].SetLetters("н", "Н");
-            RusKeys[0][6].SetLetters("г", "Г");
-            RusKeys[0][7].SetLetters("ш", "Ш");
-            RusKeys[0][8].SetLetters("щ", "Щ");
-            RusKeys[0][9].SetLetters("з", "З");
-            RusKeys[0][10].SetLetters("х", "Х");
-            RusKeys[0][11].SetLetters("ъ", "Ъ");
-            RusKeys[1][0].SetLetters("ф", "Ф");
-            RusKeys[1][1].SetLetters("ы", "Ы");
-            RusKeys[1][2].SetLetters("в", "В");
-            RusKeys[1][3].SetLetters("а", "А");
-            RusKeys[1][4].SetLetters("п", "П");
-            RusKeys[1][5].SetLetters("р", "Р");
-            RusKeys[1][6].SetLetters("о", "О");
-            RusKeys[1][7].SetLetters("л", "Л");
-            RusKeys[1][8].SetLetters("д", "Д");
-            RusKeys[1][9].SetLetters("ж", "Ж");
-            RusKeys[1][10].SetLetters("э", "Э");
-            RusKeys[2][0].SetLetters("я", "Я");
-            RusKeys[2][1].SetLetters("ч", "Ч");
-            RusKeys[2][2].SetLetters("с", "С");
-            RusKeys[2][3].SetLetters("м", "М");
-            RusKeys[2][4].SetLetters("и", "И");
-            RusKeys[2][5].SetLetters("т", "Т");
-            RusKeys[2][6].SetLetters("ь", "Ь");
-            RusKeys[2][7].SetLetters("б", "Б");
-            RusKeys[2][8].SetLetters("ю", "Ю");
-            RusKeys[2][9].SetLetters(".", ",");
+            RusLetters();
 
+            // Заполним кнопками буквенную английскую панель
             EngKeys[0] = new KeyButton[12];
             EngKeys[1] = new KeyButton[11];
             EngKeys[2] = new KeyButton[10];
@@ -220,6 +169,61 @@ namespace Vizitka
                     EngGrid[i].Children.Add(EngKeys[i][j]);
                 }
             }
+            EngLetters();
+
+            // Заполним кнопками функциональную панель
+            for (int i = 0; i < BottomKeys.Count(); i++)
+            {
+                Bottom.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(i == 2 ? 4 : 1, GridUnitType.Star) });
+                BottomKeys[i] = new KeyButton();
+                SetColumn(BottomKeys[i], i);
+                Bottom.Children.Add(BottomKeys[i]);
+            }
+            BottomLetters();
+
+            // Добавим всем кнопкам событие нажатия
+            foreach (KeyButton KB in NumEngKeys)
+                KB.Click += KeyButton_Click;
+            foreach (KeyButton KB in NumRusKeys)
+                KB.Click += KeyButton_Click;
+            foreach (KeyButton[] KBA in RusKeys)
+                foreach (KeyButton KB in KBA)
+                    KB.Click += KeyButton_Click;
+            foreach (KeyButton[] KBA in EngKeys)
+                foreach (KeyButton KB in KBA)
+                    KB.Click += KeyButton_Click;
+            foreach (KeyButton KB in BottomKeys)
+                KB.Click += KeyButton_Click;
+
+            // Добавим все панели на корневую
+            Children.Add(NumEng);
+            Children.Add(NumRus);
+            Children.Add(Rus);
+            Children.Add(Eng);
+            Children.Add(Bottom);
+            // Корневую привяжем к заданной 
+            Core.Children.Add(this);
+            // И изменим размер шрифта
+            FontSize = 16;
+        }
+
+        /// <summary>
+        /// Заполним буквами нижнюю функциональную панель
+        /// </summary>
+        private void BottomLetters()
+        {
+            BottomKeys[0].SetLetters("Shift", "Shift");
+            BottomKeys[1].SetLetters("Backspace", "Backspace");
+            BottomKeys[2].SetLetters(" ", " ");
+            BottomKeys[3].SetLetters("En/Ru", (char)24 + "En/Ru");
+            BottomKeys[4].SetLetters("OK", "OK");
+        }
+
+        /// <summary>
+        /// Заполним буквами панель английских букв
+        /// </summary>
+        private void EngLetters()
+        {
             EngKeys[0][0].SetLetters("q", "Q");
             EngKeys[0][1].SetLetters("w", "W");
             EngKeys[0][2].SetLetters("e", "E");
@@ -253,49 +257,100 @@ namespace Vizitka
             EngKeys[2][7].SetLetters(",", "<");
             EngKeys[2][8].SetLetters(".", ">");
             EngKeys[2][9].SetLetters("/", "?");
-
-            for (int i = 0; i < BottomKeys.Count(); i++)
-            {
-                Bottom.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(i==2 ? 4 : 1, GridUnitType.Star) });
-                BottomKeys[i] = new KeyButton();
-                SetColumn(BottomKeys[i], i);
-                Bottom.Children.Add(BottomKeys[i]);
-            }
-            BottomKeys[0].SetLetters("Shift", "Shift");
-            BottomKeys[1].SetLetters("Backspace", "Backspace");
-            BottomKeys[2].SetLetters(" ", " ");
-            
-            BottomKeys[3].SetLetters("En/Ru", (char)24 + "En/Ru");
-            BottomKeys[4].SetLetters("OK", "OK");
-
-            foreach (KeyButton KB in NumEngKeys)
-                KB.Click += KeyButton_Click;
-            foreach (KeyButton KB in NumRusKeys)
-                KB.Click += KeyButton_Click;
-            foreach (KeyButton[] KBA in RusKeys)
-                foreach (KeyButton KB in KBA)
-                    KB.Click += KeyButton_Click;
-            foreach (KeyButton[] KBA in EngKeys)
-                foreach (KeyButton KB in KBA)
-                    KB.Click += KeyButton_Click;
-            foreach (KeyButton KB in BottomKeys)
-                KB.Click += KeyButton_Click;
-
-
-            Children.Add(NumEng);
-            Children.Add(NumRus);
-            Children.Add(Rus);
-            Children.Add(Eng); 
-            Children.Add(Bottom);
-            Core.Children.Add(this);
-            FontSize = 16;
         }
 
+        /// <summary>
+        /// Заполним буквами панель русских букв
+        /// </summary>
+        private void RusLetters()
+        {
+            RusKeys[0][0].SetLetters("й", "Й");
+            RusKeys[0][1].SetLetters("ц", "Ц");
+            RusKeys[0][2].SetLetters("у", "У");
+            RusKeys[0][3].SetLetters("к", "К");
+            RusKeys[0][4].SetLetters("е", "Е");
+            RusKeys[0][5].SetLetters("н", "Н");
+            RusKeys[0][6].SetLetters("г", "Г");
+            RusKeys[0][7].SetLetters("ш", "Ш");
+            RusKeys[0][8].SetLetters("щ", "Щ");
+            RusKeys[0][9].SetLetters("з", "З");
+            RusKeys[0][10].SetLetters("х", "Х");
+            RusKeys[0][11].SetLetters("ъ", "Ъ");
+            RusKeys[1][0].SetLetters("ф", "Ф");
+            RusKeys[1][1].SetLetters("ы", "Ы");
+            RusKeys[1][2].SetLetters("в", "В");
+            RusKeys[1][3].SetLetters("а", "А");
+            RusKeys[1][4].SetLetters("п", "П");
+            RusKeys[1][5].SetLetters("р", "Р");
+            RusKeys[1][6].SetLetters("о", "О");
+            RusKeys[1][7].SetLetters("л", "Л");
+            RusKeys[1][8].SetLetters("д", "Д");
+            RusKeys[1][9].SetLetters("ж", "Ж");
+            RusKeys[1][10].SetLetters("э", "Э");
+            RusKeys[2][0].SetLetters("я", "Я");
+            RusKeys[2][1].SetLetters("ч", "Ч");
+            RusKeys[2][2].SetLetters("с", "С");
+            RusKeys[2][3].SetLetters("м", "М");
+            RusKeys[2][4].SetLetters("и", "И");
+            RusKeys[2][5].SetLetters("т", "Т");
+            RusKeys[2][6].SetLetters("ь", "Ь");
+            RusKeys[2][7].SetLetters("б", "Б");
+            RusKeys[2][8].SetLetters("ю", "Ю");
+            RusKeys[2][9].SetLetters(".", ",");
+        }
+
+        /// <summary>
+        /// Заполним буквами панель русских цифр
+        /// </summary>
+        private void NumRusLetters()
+        {
+            NumRusKeys[0].SetLetters("1", "!");
+            NumRusKeys[1].SetLetters("2", "\"");
+            NumRusKeys[2].SetLetters("3", "№");
+            NumRusKeys[3].SetLetters("4", ";");
+            NumRusKeys[4].SetLetters("5", "%");
+            NumRusKeys[5].SetLetters("6", ":");
+            NumRusKeys[6].SetLetters("7", "?");
+            NumRusKeys[7].SetLetters("8", "*");
+            NumRusKeys[8].SetLetters("9", "(");
+            NumRusKeys[9].SetLetters("0", ")");
+            NumRusKeys[10].SetLetters("-", "_");
+            NumRusKeys[11].SetLetters("=", "+");
+        }
+
+        /// <summary>
+        /// Заполним буквами панель английских цифр
+        /// </summary>
+        private void NumEngLetters()
+        {
+            NumEngKeys[0].SetLetters("1", "!");
+            NumEngKeys[1].SetLetters("2", "@");
+            NumEngKeys[2].SetLetters("3", "#");
+            NumEngKeys[3].SetLetters("4", "$");
+            NumEngKeys[4].SetLetters("5", "%");
+            NumEngKeys[5].SetLetters("6", "^");
+            NumEngKeys[6].SetLetters("7", "&");
+            NumEngKeys[7].SetLetters("8", "*");
+            NumEngKeys[8].SetLetters("9", "(");
+            NumEngKeys[9].SetLetters("0", ")");
+            NumEngKeys[10].SetLetters("-", "_");
+            NumEngKeys[11].SetLetters("=", "+");
+        }
+
+        /// <summary>
+        /// Событие на нажатие кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void KeyButton_Click(object sender, RoutedEventArgs e)
         {
+            // Получим текст кнопки
             string Out = ((KeyButton)sender).Letter;
+            // и произведём операцию
             switch (Out)
             {
+                // Сначала специфичные
+                // - Shift - изменим регистр
                 case "Shift":
                     Shift = !Shift;
                     foreach (KeyButton KB in NumEngKeys)
@@ -309,28 +364,74 @@ namespace Vizitka
                         foreach (KeyButton KB in KBA)
                             KB.SetShift(Shift);
                     break;
+                // - Изменим язык
                 case "En/Ru":
                     Lang = Lang == Languages.Eng ? Languages.Rus : Languages.Eng;
                     break;
+                // - Закроем клавиатуру
+                case "OK":
+                    Visibility = Visibility.Collapsed;
+                    break;
+                // - В остальных случаях напечатаем написанный символ
                 default:
                     WriteLetter(Out);
                     break;
             }
         }
 
+        /// <summary>
+        /// Функция печати символа
+        /// </summary>
+        /// <param name="Letter">Символ для печати</param>
         public void WriteLetter(string Letter)
         {
+            // Если не выбрано поле, то ничего не печатаем.
             if (InTextBox == null) return;
 
+            // Вернём фокус элементу
+            InTextBox.Focus();
+
+            // Получим размер выделения
             int begin = InTextBox.SelectionStart;
             int length = InTextBox.SelectionLength;
 
+            // Удалим выделение
             InTextBox.Text = InTextBox.Text.Remove(begin, length);
-            if (Letter == "Backspace") InTextBox.Text = InTextBox.Text.Remove(begin-1, 1);
+            // Если нажали на Backspace, то удалим выделение или предыдущий символ
+            if (Letter == "Backspace")
+            {
+                InTextBox.SelectionStart = begin;
+                if (begin == 0) return;
+                if (length > 0) return;
+                InTextBox.Text = InTextBox.Text.Remove(begin - 1, 1);
+            }
+            // В противном случае напечатаем символ
             else InTextBox.Text = InTextBox.Text.Insert(begin, Letter);
-            InTextBox.Focus();
+            
+            // И выставим обратно курсор.
             if (Letter == "Backspace") InTextBox.SelectionStart = begin - 1;
             else InTextBox.SelectionStart = begin + Letter.Length;
+        }
+
+        /// <summary>
+        /// Показать виртуальную клавиатуру, привязав её к текстовому блоку
+        /// </summary>
+        /// <param name="Input"></param>
+        public void Show(TextBox Input)
+        {
+            InTextBox = Input;
+            // Расчитаем отступ слева
+            double Left = Input.Margin.Left + (Input.ActualWidth - Width) / 2;
+            if (Left <= 20) Left = 20;
+            if (Left + Width >= ((Panel)Parent).ActualWidth - 20) Left = ((Panel)Parent).ActualWidth - Width - 20;
+
+            // Расчитаем отступ сверху
+            double Top = Input.Margin.Top + Input.ActualHeight + 20;
+            if (Top + Height >= ((Panel)Parent).ActualHeight - 20) Top = Input.Margin.Top - Height - 20;
+
+            // И покажем виртуальную клавиатуру
+            Margin = new Thickness(Left,Top,0,0);
+            Visibility = Visibility.Visible;
         }
     }
 }

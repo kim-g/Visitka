@@ -20,17 +20,30 @@ namespace Vizitka
     /// </summary>
     public partial class MainWindow : Window
     {
+        Keyboard VirtualKeyboard;
+
         public MainWindow()
         {
             InitializeComponent();
-            Keyboard K = new Keyboard(Core) { Lang = Languages.Rus };
-            Grid.SetRow(K, 1);
-            K.InTextBox = TestBox;
+            VirtualKeyboard = new Keyboard(Core)
+            {
+                Lang = Languages.Rus,
+                Width = 500,
+                Height = 300,
+                Visibility = Visibility.Collapsed
+            };
+            Grid.SetRow(VirtualKeyboard, 0);
+            
         }
 
         private void KeyButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void TestBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            VirtualKeyboard.Show((TextBox)sender);
         }
     }
 }
