@@ -11,6 +11,7 @@ namespace Vizitka
     {
         private Label VisitName;
 
+        // instagram://user?username=kim-g
         // Свойства
         public string Title { get { return (string)VisitName.Content; } set { VisitName.Content = value; } }
 
@@ -26,5 +27,7 @@ namespace Vizitka
             VertStack.Children.Add(VisitName);
             Core.Children.Add(this);
         }
+
+        
     }
 }
