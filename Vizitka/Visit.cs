@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows;
 
 namespace Vizitka
 {
@@ -17,36 +18,62 @@ namespace Vizitka
         private Label EMail;
         private Label Instagram;
         private Image InstaQR;
+        Rectangle Back;
 
-        // instagram://user?username=kim-g
         // Свойства
+        /// <summary>
+        /// ФИО на визитке
+        /// </summary>
         public string PersonName { get { return (string)VisitName.Content; } set { VisitName.Content = value; } }
-        public string PersonCompany { get { return (string)Company.Content; } set { Company.Content = value; } }
-        public string PersonJob { get { return (string)Job.Content; } set { Job.Content = value; } }
-        public string PersonEMail { get { return (string)EMail.Content; } set { EMail.Content = value; } }
+        /// <summary>
+        /// Компания
+        /// </summary>
+        public string PersonCompany { get { return (string)Company.Content; } set { Company.Content = value; Company.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible; } }
+        /// <summary>
+        /// Должность / Профессия
+        /// </summary>
+        public string PersonJob { get { return (string)Job.Content; } set { Job.Content = value; Job.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible; } }
+        /// <summary>
+        /// Электронный адрес
+        /// </summary>
+        public string PersonEMail { get { return (string)EMail.Content; } set { EMail.Content = value; EMail.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible; } }
+        /// <summary>
+        /// Логин в Instagram
+        /// </summary>
         public string PersonInstagram
         {
             get { return (string)Instagram.Content; }
             set
             {
                 Instagram.Content = value;
-                if (value == "") InstaQR.Visibility = System.Windows.Visibility.Collapsed;
-                else InstaQR.Source = QRCodeWPF.GetQRCode(@"instagram://user?username=" + value);
+                Instagram.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible;
+                InstaQR.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible;
+                if (value != "") InstaQR.Source = QRCodeWPF.GetQRCode(@"instagram://user?username=" + value);
             }
         }
-
-        public Visit(Panel Core)
+        /// <summary>
+        /// Фон визитки
+        /// </summary>
+        public Brush BackGroundImage
         {
-            HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-            VerticalAlignment = System.Windows.VerticalAlignment.Top;
+            get { return Back.Fill; }
+            set { Back.Fill = value; }
+        }
+
+        /// <summary>
+        /// Создание новой визитки
+        /// </summary>
+        public Visit()
+        {
+            HorizontalAlignment = HorizontalAlignment.Left;
+            VerticalAlignment = VerticalAlignment.Top;
             Width = 333.30;
             Height = 183;
 
-            Rectangle Back = new Rectangle()
+            Back = new Rectangle()
             {
                 Fill = new SolidColorBrush(Colors.Green),
-                Stroke = new SolidColorBrush(Colors.Black),
-                StrokeThickness = 3
+                Stroke = null
             };
             Children.Add(Back);
 
@@ -79,10 +106,35 @@ namespace Vizitka
 
             InstaQR = new Image();
             HorStack.Children.Add(InstaQR);
-
-            Core.Children.Add(this);
         }
 
-        
+        public Visit Clone()
+        {
+            return new Visit()
+            {
+                PersonName = this.PersonName,
+                PersonCompany = this.PersonCompany,
+                PersonJob = this.PersonJob,
+                PersonEMail = this.PersonEMail,
+                PersonInstagram = this.PersonInstagram
+            };
+        }
+
+        public StackPanel MultileObject(int Width, int Height)
+        {
+            StackPanel NewPanel = new StackPanel() { Orientation = Orientation.Vertical };
+            StackPanel[] HorisontalPanels = new StackPanel[Height];
+            for (int i = 0; i < Height; i++)
+            {
+                HorisontalPanels[i] = new StackPanel() { Orientation = Orientation.Horizontal };
+                for (int j = 0; j < Width; j++)
+                {
+                    FrameworkElement NewElement = Clone();
+                    HorisontalPanels[i].Children.Add(NewElement);
+                }
+                NewPanel.Children.Add(HorisontalPanels[i]);
+            }
+            return NewPanel;
+        }
     }
 }

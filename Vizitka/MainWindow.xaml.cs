@@ -53,14 +53,20 @@ namespace Vizitka
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Visit V1 = new Visit(Core)
+            Visit V1 = new Visit()
             {
                 PersonName = PName.Text,
                 PersonCompany = PCompany.Text,
                 PersonJob = PJob.Text,
                 PersonEMail = PEMail.Text,
-                PersonInstagram = PIntagram.Text
+                PersonInstagram = PIntagram.Text,
+                BackGroundImage = new SolidColorBrush(Colors.Aqua)
             };
+
+
+
+            WPF_Printer.Print(V1.MultileObject(2, 10));
+            GC.Collect();
         }
     }
 }

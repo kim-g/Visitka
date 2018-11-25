@@ -64,6 +64,7 @@
     <Compile Include="KeyButton.cs" />
     <Compile Include="QRCodeWPF.cs" />
     <Compile Include="Visit.cs" />
+    <Compile Include="WPF_Printer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
