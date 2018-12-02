@@ -48,9 +48,6 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\QRCoder.1.3.3\lib\net40\UnityEngine.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -96,6 +93,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Raleway-Bold.ttf" />
+    <Resource Include="Raleway-Regular.ttf" />
+    <Resource Include="formular-regular.otf" />
+    <Resource Include="formular-black.otf" />
+    <Resource Include="formular-blackitalic.otf" />
+    <Resource Include="formular-bold.otf" />
+    <Resource Include="formular-bolditalic.otf" />
+    <Resource Include="formular-extralight.otf" />
+    <Resource Include="formular-extralightitalic.otf" />
+    <Resource Include="formular-light.otf" />
+    <Resource Include="formular-lightitalic.otf" />
+    <Resource Include="formular-medium.otf" />
+    <Resource Include="formular-mediumitalic.otf" />
+    <Resource Include="formular-mono.otf" />
+    <Resource Include="formular-regularitalic.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -104,6 +116,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slide01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slide02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slide03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slide04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Vis1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Vis2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Vis3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Vis4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Vis5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

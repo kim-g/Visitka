@@ -7,24 +7,37 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace Vizitka
 {
     public class Visit : Grid
     {
+        private Label VisitSurname;
         private Label VisitName;
+        private Label VisitSecondName;
         private Label Company;
         private Label Job;
+        private Label Phone;
         private Label EMail;
         private Label Instagram;
         private Image InstaQR;
         Rectangle Back;
+        private byte VisitStyle = 1;
 
         // Свойства
         /// <summary>
-        /// ФИО на визитке
+        /// Фамилия на визитке
+        /// </summary>
+        public string PersonSurname { get { return (string)VisitSurname.Content; } set { VisitSurname.Content = value; } }
+        /// <summary>
+        /// Имя на визитке
         /// </summary>
         public string PersonName { get { return (string)VisitName.Content; } set { VisitName.Content = value; } }
+        /// <summary>
+        /// Отчество на визитке
+        /// </summary>
+        public string PersonSecondName { get { return (string)VisitSecondName.Content; } set { VisitSecondName.Content = value; } }
         /// <summary>
         /// Компания
         /// </summary>
@@ -33,6 +46,10 @@ namespace Vizitka
         /// Должность / Профессия
         /// </summary>
         public string PersonJob { get { return (string)Job.Content; } set { Job.Content = value; Job.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible; } }
+        /// <summary>
+        /// Должность / Профессия
+        /// </summary>
+        public string PersonPhone { get { return (string)Phone.Content; } set { Phone.Content = value; Phone.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible; } }
         /// <summary>
         /// Электронный адрес
         /// </summary>
@@ -46,7 +63,7 @@ namespace Vizitka
             set
             {
                 Instagram.Content = value;
-                Instagram.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible;
+                Instagram.Visibility = value == "" ? Visibility.Collapsed : Visibility.Collapsed;
                 InstaQR.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible;
                 if (value != "") InstaQR.Source = QRCodeWPF.GetQRCode(@"instagram://user?username=" + value);
             }
@@ -61,14 +78,178 @@ namespace Vizitka
         }
 
         /// <summary>
+        /// Один из предопределённых слилей визитки
+        /// </summary>
+        public byte GlobalStyle
+        {
+            get
+            {
+                return VisitStyle;
+            }
+            set
+            {
+                byte OldStyle = VisitStyle;
+                VisitStyle = value;
+                switch (VisitStyle)
+                {
+                    case 1:
+                        BackGroundImage = ImageBrushFromResources("Vis1.png");
+                        ChangeLabel(VisitSurname, 361, 110, 52, "Formular", true, 
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(VisitName, 361, 165, 47, "Formular", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(VisitSecondName, 361, 210, 47, "Formular", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(Company, 420, 290, 30, "Railway", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(Phone, 420, 335, 30, "Railway", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(EMail, 420, 375, 30, "Railway", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        Instagram.Visibility = Visibility.Collapsed;
+                        InstaQR.Margin = new Thickness(716, 24, 0, 0);
+                        InstaQR.Width = 82;
+                        InstaQR.Height = 82;
+                        break;
+
+                    case 2:
+                        BackGroundImage = ImageBrushFromResources("Vis2.png");
+                        ChangeLabel(VisitSurname, 361, 110, 52, "Formular", true,
+                            Color.FromRgb(234, 90, 98));
+
+                        ChangeLabel(VisitName, 361, 165, 47, "Formular", false,
+                            Color.FromRgb(114, 114, 113));
+
+                        ChangeLabel(VisitSecondName, 361, 210, 47, "Formular", false,
+                            Color.FromRgb(114, 114, 113));
+
+                        ChangeLabel(Company, 420, 290, 30, "Railway", false,
+                            Color.FromRgb(114, 114, 113));
+
+                        ChangeLabel(Phone, 420, 335, 30, "Railway", false,
+                            Color.FromRgb(114, 114, 113));
+
+                        ChangeLabel(EMail, 420, 375, 30, "Railway", false,
+                            Color.FromRgb(114, 114, 113));
+
+                        Instagram.Visibility = Visibility.Collapsed;
+                        InstaQR.Margin = new Thickness(716, 24, 0, 0);
+                        InstaQR.Width = 82;
+                        InstaQR.Height = 82;
+                        break;
+
+                    case 3:
+                        BackGroundImage = ImageBrushFromResources("Vis3.png");
+                        ChangeLabel(VisitSurname, 352, 114, 52, "Formular", true,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(VisitName, 352, 169, 47, "Formular", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(VisitSecondName, 352, 214, 47, "Formular", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(Company, 368, 302, 30, "Railway", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(Phone, 368, 336, 30, "Railway", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(EMail, 368, 369, 30, "Railway", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        Instagram.Visibility = Visibility.Collapsed;
+                        InstaQR.Margin = new Thickness(717, 25, 0, 0);
+                        InstaQR.Width = 82;
+                        InstaQR.Height = 82;
+                        break;
+
+                    case 4:
+                        BackGroundImage = ImageBrushFromResources("Vis4.png");
+                        ChangeLabel(VisitSurname, 352, 114, 52, "Formular", true,
+                            Color.FromRgb(234, 90, 98));
+
+                        ChangeLabel(VisitName, 352, 169, 47, "Formular", false,
+                            Color.FromRgb(234, 90, 98));
+
+                        ChangeLabel(VisitSecondName, 352, 214, 47, "Formular", false,
+                            Color.FromRgb(234, 90, 98));
+
+                        ChangeLabel(Company, 368, 302, 30, "Railway", false,
+                            Color.FromRgb(114, 114, 113));
+
+                        ChangeLabel(Phone, 368, 336, 30, "Railway", false,
+                            Color.FromRgb(114, 114, 113));
+
+                        ChangeLabel(EMail, 368, 369, 30, "Railway", false,
+                            Color.FromRgb(114, 114, 113));
+
+                        Instagram.Visibility = Visibility.Collapsed;
+                        InstaQR.Margin = new Thickness(717, 25, 0, 0);
+                        InstaQR.Width = 82;
+                        InstaQR.Height = 82;
+                        break;
+
+                    case 5:
+                        BackGroundImage = ImageBrushFromResources("Vis5.png");
+                        ChangeLabel(VisitSurname, 348, 97, 44, "Formular", true,
+                             Color.FromRgb(235, 91, 98));
+
+                        ChangeLabel(VisitName, 348, 143, 34, "Formular", false,
+                            Color.FromRgb(235, 91, 98));
+
+                        ChangeLabel(VisitSecondName, 348, 210, 34, "Formular", false,
+                            Color.FromRgb(235, 91, 98));
+
+                        ChangeLabel(Company, 420, 290, 30, "Railway", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(Phone, 420, 335, 30, "Railway", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(EMail, 420, 375, 30, "Railway", false,
+                            Color.FromRgb(254, 254, 254));
+
+                        Instagram.Visibility = Visibility.Collapsed;
+                        InstaQR.Margin = new Thickness(716, 24, 0, 0);
+                        InstaQR.Width = 82;
+                        InstaQR.Height = 82;
+                        break;
+                }
+            }
+        }
+
+        private Brush ImageBrushFromResources(string ResName)
+        {
+            return new ImageBrush(new BitmapImage(new Uri($"pack://application:,,,/{ResName}", UriKind.Absolute))
+            { CreateOptions = BitmapCreateOptions.IgnoreImageCache });
+        }
+
+        private void ChangeLabel(Label CurLabel, double left, double top, 
+            double size, string FontName, bool Bold, Color TextColor)
+        {
+            CurLabel.Margin = new Thickness(left, top, 0, 0);
+            CurLabel.FontSize = size;
+            CurLabel.FontFamily = new FontFamily("Formular");
+            CurLabel.FontWeight = Bold ? FontWeights.Bold : FontWeights.Regular;
+            CurLabel.Foreground = new SolidColorBrush(TextColor);
+        }
+
+        /// <summary>
         /// Создание новой визитки
         /// </summary>
-        public Visit()
+        public Visit(byte VisitStyle)
         {
             HorizontalAlignment = HorizontalAlignment.Left;
             VerticalAlignment = VerticalAlignment.Top;
-            Width = 333.30;
-            Height = 183;
+            Width = 822;
+            Height = 457;
 
             Back = new Rectangle()
             {
@@ -77,44 +258,48 @@ namespace Vizitka
             };
             Children.Add(Back);
 
-            StackPanel HorStack = new StackPanel()
-            {
-                Orientation = Orientation.Horizontal
-            };
-            Children.Add(HorStack);
-
-            StackPanel VertStack = new StackPanel()
-            {
-                Orientation = Orientation.Vertical
-            };
-            HorStack.Children.Add(VertStack);
+            VisitSurname = new Label();
+            Children.Add(VisitSurname);
 
             VisitName = new Label();
-            VertStack.Children.Add(VisitName);
+            Children.Add(VisitName);
+
+            VisitSecondName = new Label();
+            Children.Add(VisitSecondName);
 
             Company = new Label();
-            VertStack.Children.Add(Company);
+            Children.Add(Company);
 
             Job = new Label();
-            VertStack.Children.Add(Job);
+            Children.Add(Job);
+
+            Phone = new Label();
+            Children.Add(Phone);
 
             EMail = new Label();
-            VertStack.Children.Add(EMail);
+            Children.Add(EMail);
 
             Instagram = new Label();
-            VertStack.Children.Add(Instagram);
+            Children.Add(Instagram);
 
-            InstaQR = new Image();
-            HorStack.Children.Add(InstaQR);
+            InstaQR = new Image()
+            {
+                VerticalAlignment = VerticalAlignment.Top,
+                HorizontalAlignment = HorizontalAlignment.Left
+            };
+            Children.Add(InstaQR);
+
+            GlobalStyle = VisitStyle;
         }
 
         public Visit Clone()
         {
-            return new Visit()
+            return new Visit(this.GlobalStyle)
             {
                 PersonName = this.PersonName,
                 PersonCompany = this.PersonCompany,
                 PersonJob = this.PersonJob,
+                PersonPhone = this.PersonPhone,
                 PersonEMail = this.PersonEMail,
                 PersonInstagram = this.PersonInstagram
             };

@@ -5,20 +5,111 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vizitka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1457" Width="1050">
+        Title="Дело-банк. Визитки" WindowState="Maximized" WindowStyle="None">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="StandartBtn">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border" BorderBrush="#00000000"
+                                BorderThickness="1" Background="#00000000">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,1,20,1"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"  Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#00000000" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#00000000" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="#00000000"/>
+        </Style>
+
+        <Style x:Key="StandartTextBox" TargetType="TextBox">
+            <Setter Property="FontSize" Value="48"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontFamily" Value="/Vizitka;component/#Formular"/>
+            <Setter Property="Foreground" Value="#FF000000"/>
+            <Setter Property="Opacity" Value="1"/>
+            <Setter Property="BorderBrush" Value="#FF5B5B5B"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.0"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#00000000"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
     <Grid x:Name="Core">
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="PName" Margin="145,37,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
-        <TextBox x:Name="PCompany" Margin="145,86,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
-        <TextBox x:Name="PJob" Margin="145,139,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
-        <TextBox x:Name="PEMail" Margin="145,195,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
-        <Label Content="ФИО" HorizontalAlignment="Left" Margin="87,41,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Компания" HorizontalAlignment="Left" Margin="53,90,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Должность" HorizontalAlignment="Left" Margin="47,143,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="e-mail" HorizontalAlignment="Left" Margin="79,199,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="PIntagram" Margin="145,249,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="33" GotFocus="TestBox_GotFocus"/>
-        <Label Content="Instagram name @" HorizontalAlignment="Left" Margin="18,253,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Button Content="СОЗДАТЬ" HorizontalAlignment="Left" Height="88" Margin="31,287,0,0" VerticalAlignment="Top" Width="492" Click="Button_Click" Grid.ColumnSpan="2"/>
+        <Grid x:Name="Slide1">
+            <Grid.Background>
+                <ImageBrush TileMode="Tile" ImageSource="Slide01.png"/>
+            </Grid.Background>
+            <Button x:Name="Slide1_Start" Margin="340,1290,0,0" Width="403" Height="134" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource StandartBtn}" Click="Slide1_Start_Click"/>
+        </Grid>
+        <Grid x:Name="Slide2" Visibility="Collapsed">
+            <Grid.Background>
+                <ImageBrush TileMode="Tile" ImageSource="Slide02.png"/>
+            </Grid.Background>
+            <Button x:Name="Vis1Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="132,643,0,0" Click="Visit_Button_Click" Tag="1" />
+            <Button x:Name="Vis2Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,643,0,0" Click="Visit_Button_Click" Tag="2" />
+            <Button x:Name="Vis3Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="132,901,0,0" Click="Visit_Button_Click" Tag="3" />
+            <Button x:Name="Vis4Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,901,0,0" Click="Visit_Button_Click" Tag="4" />
+            <Button x:Name="Vis5Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="132,1160,0,0" Click="Visit_Button_Click" Tag="5" />
+            <Button x:Name="Vis6Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,1160,0,0" Click="Visit_Button_Click" Tag="6" />
+            <Button x:Name="Vis7Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="349,1418,0,0" Click="Visit_Button_Click" Tag="7" />
+        </Grid>
+        <Grid x:Name="Slide3" Visibility="Collapsed">
+            <Grid.Background>
+                <ImageBrush TileMode="Tile" ImageSource="Slide03.png"/>
+            </Grid.Background>
+            <TextBox x:Name="PName" Style="{StaticResource StandartTextBox}" Margin="254,666,0,0" Width="733" Height="143" GotFocus="TestBox_GotFocus"/>
+            <TextBox x:Name="PCompany" Style="{StaticResource StandartTextBox}" Margin="336,841,0,0" Width="637" Height="143" GotFocus="TestBox_GotFocus"/>
+            <TextBox x:Name="PJob" Style="{StaticResource StandartTextBox}" Margin="372,1015,0,0" Width="603" Height="143" GotFocus="TestBox_GotFocus"/>
+            <TextBox x:Name="PPhone" Style="{StaticResource StandartTextBox}" Margin="182,1206,0,0" Width="793" Height="143" GotFocus="TestBox_GotFocus"/>
+            <TextBox x:Name="PEMail" Style="{StaticResource StandartTextBox}" Margin="182,1380,0,0" Width="793" Height="143" GotFocus="TestBox_GotFocus"/>
+            <TextBox x:Name="PIntagram" Style="{StaticResource StandartTextBox}" Margin="182,1548,0,0" Width="634" Height="105" GotFocus="TestBox_GotFocus"/>
+
+            <Button x:Name="Slide3_Start" Margin="338,1685,0,0" Width="404" Height="117" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource StandartBtn}" Click="Slide3_Start_Click"/>
+        </Grid>
+        <Grid x:Name="Slide4" Visibility="Collapsed">
+            <Grid.Background>
+                <ImageBrush TileMode="Tile" ImageSource="Slide04.png"/>
+            </Grid.Background>
+            <Button x:Name="Slide4_OK" Margin="340,1290,0,0" Width="403" Height="134" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource StandartBtn}" Click="Slide1_Start_Click"/>
+        </Grid>
     </Grid>
 </Window>

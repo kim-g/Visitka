@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Vizitka"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="Formular">pack://application:,,,/#formular</FontFamily>
+        <FontFamily x:Key="Railway">pack://application:,,,/#Raleway</FontFamily>
     </Application.Resources>
 </Application>
