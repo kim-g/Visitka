@@ -29,6 +29,28 @@
             <Setter Property="Foreground" Value="#00000000"/>
         </Style>
 
+        <Style TargetType="{x:Type Button}" x:Key="VKBtn">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border" BorderBrush="#00000000"
+                                BorderThickness="1" Background="#FFFFFFFF">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,1,20,1"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"  Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#00000000" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#00000000" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="#00000000"/>
+        </Style>
+
         <Style x:Key="StandartTextBox" TargetType="TextBox">
             <Setter Property="FontSize" Value="48"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -109,7 +131,16 @@
             <Grid.Background>
                 <ImageBrush TileMode="Tile" ImageSource="Slide04.png"/>
             </Grid.Background>
-            <Button x:Name="Slide4_OK" Margin="340,1290,0,0" Width="403" Height="134" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource StandartBtn}" Click="Slide1_Start_Click"/>
+            <Button x:Name="Slide4_OK" Margin="338,1548,0,0" Width="402" Height="115" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource StandartBtn}" Click="Slide4_OK_Click" />
+            <Button x:Name="Slide4_Edit" Margin="338,1684,0,0" Width="402" Height="118" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource StandartBtn}" Click="Slide4_Edit_Click" />
         </Grid>
+        <Grid x:Name="Slide5" Visibility="Collapsed">
+            <Grid.Background>
+                <ImageBrush TileMode="Tile" ImageSource="Slide05.png"/>
+            </Grid.Background>
+            <Button x:Name="Slide5_OK" Margin="0,0,0,0" Width="1080" Height="1920" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource StandartBtn}" Click="Slide5_OK_Click" />
+        </Grid>
+
+        <Button x:Name="CloseAll" Margin="969,23,0,0" Width="84" Height="84" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource StandartBtn}" Click="Slide5_OK_Click" />
     </Grid>
 </Window>

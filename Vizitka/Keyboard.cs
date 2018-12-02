@@ -174,7 +174,7 @@ namespace Vizitka
             // Заполним кнопками функциональную панель
             for (int i = 0; i < BottomKeys.Count(); i++)
             {
-                Bottom.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(i == 2 ? 4 : 1, GridUnitType.Star) });
+                Bottom.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(i == 2 ? 3 : 1, GridUnitType.Star) });
                 BottomKeys[i] = new KeyButton();
                 SetColumn(BottomKeys[i], i);
                 Bottom.Children.Add(BottomKeys[i]);
@@ -213,7 +213,7 @@ namespace Vizitka
         private void BottomLetters()
         {
             BottomKeys[0].SetLetters("Shift", "Shift");
-            BottomKeys[1].SetLetters("Backspace", "Backspace");
+            BottomKeys[1].SetLetters("<-", "<-");
             BottomKeys[2].SetLetters(" ", " ");
             BottomKeys[3].SetLetters("En/Ru", (char)24 + "En/Ru");
             BottomKeys[4].SetLetters("OK", "OK");
@@ -398,7 +398,7 @@ namespace Vizitka
             // Удалим выделение
             InTextBox.Text = InTextBox.Text.Remove(begin, length);
             // Если нажали на Backspace, то удалим выделение или предыдущий символ
-            if (Letter == "Backspace")
+            if (Letter == "<-")
             {
                 InTextBox.SelectionStart = begin;
                 if (begin == 0) return;
@@ -409,7 +409,7 @@ namespace Vizitka
             else InTextBox.Text = InTextBox.Text.Insert(begin, Letter);
             
             // И выставим обратно курсор.
-            if (Letter == "Backspace") InTextBox.SelectionStart = begin - 1;
+            if (Letter == "<-") InTextBox.SelectionStart = begin - 1;
             else InTextBox.SelectionStart = begin + Letter.Length;
         }
 

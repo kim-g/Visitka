@@ -29,7 +29,7 @@ namespace Vizitka
         /// <summary>
         /// Фамилия на визитке
         /// </summary>
-        public string PersonSurname { get { return (string)VisitSurname.Content; } set { VisitSurname.Content = value; } }
+        public string PersonSurname { get { return (string)VisitSurname.Content; } set { VisitSurname.Content = value.ToUpper(); } }
         /// <summary>
         /// Имя на визитке
         /// </summary>
@@ -37,7 +37,15 @@ namespace Vizitka
         /// <summary>
         /// Отчество на визитке
         /// </summary>
-        public string PersonSecondName { get { return (string)VisitSecondName.Content; } set { VisitSecondName.Content = value; } }
+        public string PersonSecondName { get { return (string)VisitSecondName.Content; } set
+            {
+                if (GlobalStyle == 7)
+                {
+                    PersonName += " " + value;
+                    VisitSecondName.Content = "";
+                }
+                else VisitSecondName.Content = value;
+            } }
         /// <summary>
         /// Компания
         /// </summary>
@@ -98,19 +106,19 @@ namespace Vizitka
                             Color.FromRgb(254, 254, 254));
 
                         ChangeLabel(VisitName, 361, 165, 47, "Formular", false,
-                            Color.FromRgb(254, 254, 254));
+                            Color.FromRgb(254, 254, 254), 4);
 
                         ChangeLabel(VisitSecondName, 361, 210, 47, "Formular", false,
-                            Color.FromRgb(254, 254, 254));
+                            Color.FromRgb(254, 254, 254), 4);
 
                         ChangeLabel(Company, 420, 290, 30, "Railway", false,
-                            Color.FromRgb(254, 254, 254));
+                            Color.FromRgb(254, 254, 254), 4);
 
                         ChangeLabel(Phone, 420, 335, 30, "Railway", false,
-                            Color.FromRgb(254, 254, 254));
+                            Color.FromRgb(254, 254, 254), 4);
 
                         ChangeLabel(EMail, 420, 375, 30, "Railway", false,
-                            Color.FromRgb(254, 254, 254));
+                            Color.FromRgb(254, 254, 254), 4);
 
                         Instagram.Visibility = Visibility.Collapsed;
                         InstaQR.Margin = new Thickness(716, 24, 0, 0);
@@ -124,19 +132,19 @@ namespace Vizitka
                             Color.FromRgb(234, 90, 98));
 
                         ChangeLabel(VisitName, 361, 165, 47, "Formular", false,
-                            Color.FromRgb(114, 114, 113));
+                            Color.FromRgb(114, 114, 113), 4);
 
                         ChangeLabel(VisitSecondName, 361, 210, 47, "Formular", false,
-                            Color.FromRgb(114, 114, 113));
+                            Color.FromRgb(114, 114, 113), 4);
 
                         ChangeLabel(Company, 420, 290, 30, "Railway", false,
-                            Color.FromRgb(114, 114, 113));
+                            Color.FromRgb(114, 114, 113), 4);
 
                         ChangeLabel(Phone, 420, 335, 30, "Railway", false,
-                            Color.FromRgb(114, 114, 113));
+                            Color.FromRgb(114, 114, 113), 4);
 
                         ChangeLabel(EMail, 420, 375, 30, "Railway", false,
-                            Color.FromRgb(114, 114, 113));
+                            Color.FromRgb(114, 114, 113), 4);
 
                         Instagram.Visibility = Visibility.Collapsed;
                         InstaQR.Margin = new Thickness(716, 24, 0, 0);
@@ -150,19 +158,19 @@ namespace Vizitka
                             Color.FromRgb(254, 254, 254));
 
                         ChangeLabel(VisitName, 352, 169, 47, "Formular", false,
-                            Color.FromRgb(254, 254, 254));
+                            Color.FromRgb(254, 254, 254), 4);
 
                         ChangeLabel(VisitSecondName, 352, 214, 47, "Formular", false,
-                            Color.FromRgb(254, 254, 254));
+                            Color.FromRgb(254, 254, 254), 4);
 
                         ChangeLabel(Company, 368, 302, 30, "Railway", false,
-                            Color.FromRgb(254, 254, 254));
+                            Color.FromRgb(254, 254, 254), 4);
 
                         ChangeLabel(Phone, 368, 336, 30, "Railway", false,
-                            Color.FromRgb(254, 254, 254));
+                            Color.FromRgb(254, 254, 254), 4);
 
                         ChangeLabel(EMail, 368, 369, 30, "Railway", false,
-                            Color.FromRgb(254, 254, 254));
+                            Color.FromRgb(254, 254, 254), 4);
 
                         Instagram.Visibility = Visibility.Collapsed;
                         InstaQR.Margin = new Thickness(717, 25, 0, 0);
@@ -176,19 +184,19 @@ namespace Vizitka
                             Color.FromRgb(234, 90, 98));
 
                         ChangeLabel(VisitName, 352, 169, 47, "Formular", false,
-                            Color.FromRgb(234, 90, 98));
+                            Color.FromRgb(234, 90, 98), 4);
 
                         ChangeLabel(VisitSecondName, 352, 214, 47, "Formular", false,
-                            Color.FromRgb(234, 90, 98));
+                            Color.FromRgb(234, 90, 98), 4);
 
                         ChangeLabel(Company, 368, 302, 30, "Railway", false,
-                            Color.FromRgb(114, 114, 113));
+                            Color.FromRgb(114, 114, 113), 4);
 
                         ChangeLabel(Phone, 368, 336, 30, "Railway", false,
-                            Color.FromRgb(114, 114, 113));
+                            Color.FromRgb(114, 114, 113), 4);
 
                         ChangeLabel(EMail, 368, 369, 30, "Railway", false,
-                            Color.FromRgb(114, 114, 113));
+                            Color.FromRgb(114, 114, 113), 4);
 
                         Instagram.Visibility = Visibility.Collapsed;
                         InstaQR.Margin = new Thickness(717, 25, 0, 0);
@@ -201,23 +209,74 @@ namespace Vizitka
                         ChangeLabel(VisitSurname, 348, 97, 44, "Formular", true,
                              Color.FromRgb(235, 91, 98));
 
-                        ChangeLabel(VisitName, 348, 143, 34, "Formular", false,
-                            Color.FromRgb(235, 91, 98));
+                        ChangeLabel(VisitName, 348, 143, 33, "Formular", false,
+                            Color.FromRgb(235, 91, 98), 4);
 
-                        ChangeLabel(VisitSecondName, 348, 210, 34, "Formular", false,
-                            Color.FromRgb(235, 91, 98));
+                        ChangeLabel(VisitSecondName, 348, 178, 33, "Formular", false,
+                            Color.FromRgb(235, 91, 98), 4);
 
-                        ChangeLabel(Company, 420, 290, 30, "Railway", false,
-                            Color.FromRgb(254, 254, 254));
+                        ChangeLabel(Company, 408, 247, 25, "Railway", false,
+                            Color.FromRgb(118, 118, 117), 4);
 
-                        ChangeLabel(Phone, 420, 335, 30, "Railway", false,
-                            Color.FromRgb(254, 254, 254));
+                        ChangeLabel(Phone, 408, 311, 25, "Railway", false,
+                            Color.FromRgb(118, 118, 117), 4);
 
-                        ChangeLabel(EMail, 420, 375, 30, "Railway", false,
-                            Color.FromRgb(254, 254, 254));
+                        ChangeLabel(EMail, 408, 375, 25, "Railway", false,
+                            Color.FromRgb(118, 118, 117), 4);
 
                         Instagram.Visibility = Visibility.Collapsed;
-                        InstaQR.Margin = new Thickness(716, 24, 0, 0);
+                        InstaQR.Margin = new Thickness(39, 331, 0, 0);
+                        InstaQR.Width = 82;
+                        InstaQR.Height = 82;
+                        break;
+
+                    case 6:
+                        BackGroundImage = ImageBrushFromResources("Vis6.png");
+                        ChangeLabel(VisitSurname, 348, 97, 44, "Formular", true,
+                             Color.FromRgb(254, 254, 254));
+
+                        ChangeLabel(VisitName, 348, 143, 33, "Formular", false,
+                            Color.FromRgb(254, 254, 254), 4);
+
+                        ChangeLabel(VisitSecondName, 348, 178, 33, "Formular", false,
+                            Color.FromRgb(254, 254, 254), 4);
+
+                        ChangeLabel(Company, 408, 247, 25, "Railway", false,
+                            Color.FromRgb(254, 254, 254), 4);
+
+                        ChangeLabel(Phone, 408, 311, 25, "Railway", false,
+                            Color.FromRgb(254, 254, 254), 4);
+
+                        ChangeLabel(EMail, 408, 375, 25, "Railway", false,
+                            Color.FromRgb(254, 254, 254), 4);
+
+                        Instagram.Visibility = Visibility.Collapsed;
+                        InstaQR.Margin = new Thickness(39, 331, 0, 0);
+                        InstaQR.Width = 82;
+                        InstaQR.Height = 82;
+                        break;
+
+                    case 7:
+                        BackGroundImage = ImageBrushFromResources("Vis7.png");
+                        ChangeLabel(VisitSurname, 30, 115, 50, "Formular", true,
+                             Color.FromRgb(235, 91, 98));
+                        VisitSurname.HorizontalContentAlignment = HorizontalAlignment.Center;
+
+                        ChangeLabel(VisitName, 30, 178, 39, "Formular", false,
+                            Color.FromRgb(235, 91, 98), 4);
+                        VisitName.HorizontalContentAlignment = HorizontalAlignment.Center;
+
+                        ChangeLabel(Company, 169, 247, 25, "Railway", false,
+                            Color.FromRgb(114, 114, 113), 4);
+
+                        ChangeLabel(Phone, 169, 324, 25, "Railway", false,
+                            Color.FromRgb(254, 254, 254), 4);
+
+                        ChangeLabel(EMail, 169, 373, 25, "Railway", false,
+                            Color.FromRgb(254, 254, 254), 4);
+
+                        Instagram.Visibility = Visibility.Collapsed;
+                        InstaQR.Margin = new Thickness(696, 331, 0, 0);
                         InstaQR.Width = 82;
                         InstaQR.Height = 82;
                         break;
@@ -232,19 +291,21 @@ namespace Vizitka
         }
 
         private void ChangeLabel(Label CurLabel, double left, double top, 
-            double size, string FontName, bool Bold, Color TextColor)
+            double size, string FontName, bool Bold, Color TextColor, 
+            int stretch=5)
         {
             CurLabel.Margin = new Thickness(left, top, 0, 0);
             CurLabel.FontSize = size;
             CurLabel.FontFamily = new FontFamily("Formular");
             CurLabel.FontWeight = Bold ? FontWeights.Bold : FontWeights.Regular;
             CurLabel.Foreground = new SolidColorBrush(TextColor);
+            CurLabel.FontStretch = FontStretch.FromOpenTypeStretch(stretch);
         }
 
         /// <summary>
         /// Создание новой визитки
         /// </summary>
-        public Visit(byte VisitStyle)
+        public Visit(byte VisitStyle = 1)
         {
             HorizontalAlignment = HorizontalAlignment.Left;
             VerticalAlignment = VerticalAlignment.Top;

@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Vizitka
 {
@@ -29,6 +31,10 @@ namespace Vizitka
         /// <param name="small">Нижний регистр</param>
         public void SetLetters(string small, string big)
         {
+            Background = new SolidColorBrush(Colors.Transparent);
+            BorderBrush = new SolidColorBrush(Colors.White);
+            FontFamily = new FontFamily("Formular");
+            FontWeight = FontWeights.Bold;
             Big = big;
             Small = small;
             Content = Letter;
