@@ -357,7 +357,9 @@ namespace Vizitka
         {
             return new Visit(this.GlobalStyle)
             {
+                PersonSurname = this.PersonSurname,
                 PersonName = this.PersonName,
+                PersonSecondName = this.PersonSecondName,
                 PersonCompany = this.PersonCompany,
                 PersonJob = this.PersonJob,
                 PersonPhone = this.PersonPhone,

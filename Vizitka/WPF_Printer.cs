@@ -15,10 +15,10 @@ namespace Vizitka
     {
         public static void Print(FrameworkElement Element)
         {
-            var dlg = new PrintDialog();
-            var result = dlg.ShowDialog();
+            var dlg = new PrintDialog(); 
+            /*var result = dlg.ShowDialog();
             if (result == null || !(bool)result)
-                return;
+                return;*/
 
             var page = new Viewbox { Child =  Element  };
 
@@ -27,7 +27,7 @@ namespace Vizitka
             page.Measure(new Size(dlg.PrintableAreaWidth, dlg.PrintableAreaHeight));
             page.Arrange(new Rect(new Point(0, 0), page.DesiredSize));
 
-            dlg.PrintVisual(page, "UnitHistory Inspection Form");
+            dlg.PrintVisual(page, "Печать визиток");
         }
     }
 }
