@@ -187,7 +187,7 @@ namespace Vizitka
         {
             Slide4.Visibility = Visibility.Collapsed;
             Slide5.Visibility = Visibility.Visible;
-            WPF_Printer.Print(VisitkaPreview.MultileObject(2, 6));
+            WPF_Printer.Print(VisitkaPreview.MultileObject(3, 4));
             History.Add(new VisitInfo()
             {
                 Surname = this.PersonName[0],

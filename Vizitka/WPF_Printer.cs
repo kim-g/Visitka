@@ -15,13 +15,12 @@ namespace Vizitka
     {
         public static void Print(FrameworkElement Element)
         {
-            var dlg = new PrintDialog(); 
+            var dlg = new PrintDialog();
+            dlg.PrintTicket.PageOrientation = System.Printing.PageOrientation.Landscape;
             /*var result = dlg.ShowDialog();
             if (result == null || !(bool)result)
                 return;*/
-
             var page = new Viewbox { Child =  Element  };
-
 
 
             page.Measure(new Size(dlg.PrintableAreaWidth, dlg.PrintableAreaHeight));

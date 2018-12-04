@@ -370,7 +370,11 @@ namespace Vizitka
 
         public StackPanel MultileObject(int Width, int Height)
         {
-            StackPanel NewPanel = new StackPanel() { Orientation = Orientation.Vertical };
+            StackPanel NewPanel = new StackPanel()
+            {
+                Orientation = Orientation.Vertical,
+                Margin = new Thickness(60,0,0,0)
+            };
             StackPanel[] HorisontalPanels = new StackPanel[Height];
             for (int i = 0; i < Height; i++)
             {
