@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,40 @@ namespace Vizitka
 `company`, `job`, `phone`, `email`, `instagram`, `type`) 
 "+$"VALUES ('{V.Surname}','{V.Name}', '{V.SecondName}', '{V.Company}', " +
 $"'{V.Job}', '{V.Phone}', '{V.Email}', '{V.Instagram}', {V.VisitType});");
+        }
+
+        public Visit GetVisit(int ID)
+        {
+            DataTable DT = ReadTable($"SELECT * FROM `Visits` WHERE `id`={ID};");
+            if (DT.Rows.Count == 0) return null;
+
+            return new Visit(Convert.ToByte( DT.Rows[0].ItemArray[9]))
+            {
+                PersonSurname = DT.Rows[0].ItemArray[1].ToString(),
+                PersonName = DT.Rows[0].ItemArray[2].ToString(),
+                PersonSecondName = DT.Rows[0].ItemArray[3].ToString(),
+                PersonCompany = DT.Rows[0].ItemArray[4].ToString() != "" &&
+                DT.Rows[0].ItemArray[5].ToString() != ""
+                ? DT.Rows[0].ItemArray[4].ToString() + ", " + DT.Rows[0].ItemArray[5].ToString()
+                : DT.Rows[0].ItemArray[4].ToString() + DT.Rows[0].ItemArray[5].ToString(),
+                PersonPhone = DT.Rows[0].ItemArray[6].ToString(),
+                PersonEMail = DT.Rows[0].ItemArray[7].ToString(),
+                PersonInstagram = DT.Rows[0].ItemArray[8].ToString(),
+            };
+        }
+
+        public List<string> GetVisitsList()
+        {
+            List<string> VD = new List<string>();
+            DataTable DT = ReadTable($"SELECT * FROM `Visits`;");
+
+            foreach (DataRow Row in DT.Rows)
+            {
+                VD.Add(Row.ItemArray[0].ToString() + " - " + Row.ItemArray[1].ToString() + " " +
+                    Row.ItemArray[2].ToString() + " " + Row.ItemArray[3].ToString());
+            }
+
+            return VD;
         }
     }
 

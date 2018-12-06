@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:List"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Список визиток" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="VisitsListBox" Margin="10" MouseDoubleClick="VisitsListBox_MouseDoubleClick"/>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,10" Orientation="Horizontal">
+            <Button x:Name="PrintButton" Content="Напечатать" FontSize="20" Padding="10,2,10,5" Click="PrintButton_Click"/>
+            <Button x:Name="CloseButton" Content="Закрыть" FontSize="20" Padding="10,2,10,5" Margin="20,0,0,0" Click="CloseButton_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
