@@ -106,12 +106,12 @@
             <Grid.Background>
                 <ImageBrush TileMode="Tile" ImageSource="Slide02.png"/>
             </Grid.Background>
-            <Button x:Name="Vis1Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="132,643,0,0" Click="Visit_Button_Click" Tag="1" />
-            <Button x:Name="Vis2Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,643,0,0" Click="Visit_Button_Click" Tag="2" />
-            <Button x:Name="Vis3Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="132,901,0,0" Click="Visit_Button_Click" Tag="3" />
-            <Button x:Name="Vis4Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,901,0,0" Click="Visit_Button_Click" Tag="4" />
-            <Button x:Name="Vis5Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="132,1160,0,0" Click="Visit_Button_Click" Tag="5" />
-            <Button x:Name="Vis6Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,1160,0,0" Click="Visit_Button_Click" Tag="6" />
+            <Button x:Name="Vis1Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="132,643,0,0" Click="Visit_Button_Click" Tag="6" />
+            <Button x:Name="Vis2Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,643,0,0" Click="Visit_Button_Click" Tag="5" />
+            <Button x:Name="Vis3Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="132,901,0,0" Click="Visit_Button_Click" Tag="2" />
+            <Button x:Name="Vis4Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,901,0,0" Click="Visit_Button_Click" Tag="1" />
+            <Button x:Name="Vis5Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="132,1160,0,0" Click="Visit_Button_Click" Tag="4" />
+            <Button x:Name="Vis6Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,1160,0,0" Click="Visit_Button_Click" Tag="3" />
             <Button x:Name="Vis7Button" Style="{StaticResource StandartBtn}" Width="382" Height="212" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="349,1418,0,0" Click="Visit_Button_Click" Tag="7" />
         </Grid>
         <Grid x:Name="Slide3" Visibility="Collapsed">

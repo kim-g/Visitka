@@ -67,13 +67,19 @@ namespace Vizitka
         /// </summary>
         public string PersonInstagram
         {
-            get { return (string)Instagram.Content; }
+            get { return ((TextBlock)(Instagram.Content)).Text; }
             set
             {
-                Instagram.Content = value;
-                Instagram.Visibility = value == "" ? Visibility.Collapsed : Visibility.Collapsed;
-                InstaQR.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible;
-                if (value != "") InstaQR.Source = QRCodeWPF.GetQRCode(@"instagram://user?username=" + value);
+                TextBlock TB = new TextBlock()
+                {
+                    Text = value.Replace(' ', '_').ToUpper(),
+                    TextWrapping = TextWrapping.Wrap
+                };
+
+                Instagram.Content = TB;
+                Instagram.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible;
+                InstaQR.Visibility = value == "" ? Visibility.Collapsed : Visibility.Collapsed;
+                //if (value != "") InstaQR.Source = QRCodeWPF.GetQRCode(@"instagram://user?username=" + value);
             }
         }
         /// <summary>
@@ -102,183 +108,233 @@ namespace Vizitka
                 {
                     case 1:
                         BackGroundImage = ImageBrushFromResources("Vis1.png");
-                        ChangeLabel(VisitSurname, 361, 110, 52, "Formular", true, 
+                        ChangeLabel(VisitSurname, 360, 117, 52, "Formular", true, 
                             Color.FromRgb(254, 254, 254));
 
-                        ChangeLabel(VisitName, 361, 165, 47, "Formular", false,
+                        ChangeLabel(VisitName, 360, 172, 47, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(VisitSecondName, 361, 210, 47, "Formular", false,
+                        ChangeLabel(VisitSecondName, 359, 217, 47, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Company, 420, 290, 30, "Railway", false,
+                        ChangeLabel(Company, 419, 300, 30, "Railway", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Phone, 420, 335, 30, "Railway", false,
+                        ChangeLabel(Phone, 419, 344, 30, "Railway", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(EMail, 420, 375, 30, "Railway", false,
+                        ChangeLabel(EMail, 419, 386, 30, "Railway", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        Instagram.Visibility = Visibility.Collapsed;
+                        ChangeLabel(Instagram, 95, 208, 26.5, "Aveny T", false,
+                            Color.FromRgb(235, 91, 98));
+                        Instagram.Width = 157;
+                        Instagram.FontWeight = FontWeights.Medium;
+                        Instagram.HorizontalAlignment = HorizontalAlignment.Left;
+                        Instagram.HorizontalContentAlignment = HorizontalAlignment.Center;
+                        /*Instagram.Visibility = Visibility.Collapsed;
                         InstaQR.Margin = new Thickness(716, 24, 0, 0);
                         InstaQR.Width = 82;
-                        InstaQR.Height = 82;
+                        InstaQR.Height = 82;*/
                         break;
 
                     case 2:
                         BackGroundImage = ImageBrushFromResources("Vis2.png");
-                        ChangeLabel(VisitSurname, 361, 110, 52, "Formular", true,
+                        ChangeLabel(VisitSurname, 360, 117, 52, "Formular", true,
                             Color.FromRgb(234, 90, 98));
 
-                        ChangeLabel(VisitName, 361, 165, 47, "Formular", false,
+                        ChangeLabel(VisitName, 360, 172, 47, "Formular", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(VisitSecondName, 361, 210, 47, "Formular", false,
+                        ChangeLabel(VisitSecondName, 359, 217, 47, "Formular", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(Company, 420, 290, 30, "Railway", false,
+                        ChangeLabel(Company, 419, 300, 30, "Railway", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(Phone, 420, 335, 30, "Railway", false,
+                        ChangeLabel(Phone, 419, 344, 30, "Railway", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(EMail, 420, 375, 30, "Railway", false,
+                        ChangeLabel(EMail, 419, 386, 30, "Railway", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        Instagram.Visibility = Visibility.Collapsed;
-                        InstaQR.Margin = new Thickness(716, 24, 0, 0);
-                        InstaQR.Width = 82;
-                        InstaQR.Height = 82;
+                        ChangeLabel(Instagram, 95, 208, 26.5, "Aveny T", false,
+                            Color.FromRgb(235, 91, 98));
+                        Instagram.Width = 157;
+                        Instagram.FontWeight = FontWeights.Medium;
+                        Instagram.HorizontalAlignment = HorizontalAlignment.Left;
+                        Instagram.HorizontalContentAlignment = HorizontalAlignment.Center;
+                        
+                        /*Instagram.Visibility = Visibility.Collapsed;
+                                                InstaQR.Margin = new Thickness(716, 24, 0, 0);
+                                                InstaQR.Width = 82;
+                                                InstaQR.Height = 82;*/
                         break;
 
                     case 3:
                         BackGroundImage = ImageBrushFromResources("Vis3.png");
-                        ChangeLabel(VisitSurname, 352, 114, 52, "Formular", true,
+                        ChangeLabel(VisitSurname, 349, 120, 52, "Formular", true,
                             Color.FromRgb(254, 254, 254));
 
-                        ChangeLabel(VisitName, 352, 169, 47, "Formular", false,
+                        ChangeLabel(VisitName, 349, 175, 47, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(VisitSecondName, 352, 214, 47, "Formular", false,
+                        ChangeLabel(VisitSecondName, 349, 220, 47, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Company, 368, 302, 30, "Railway", false,
+                        ChangeLabel(Company, 365, 310, 30, "Railway", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Phone, 368, 336, 30, "Railway", false,
+                        ChangeLabel(Phone, 365, 344, 30, "Railway", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(EMail, 368, 369, 30, "Railway", false,
+                        ChangeLabel(EMail, 365, 379, 30, "Railway", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        Instagram.Visibility = Visibility.Collapsed;
+                        ChangeLabel(Instagram, 28, 78, 19.5, "Aveny T", false,
+                            Color.FromRgb(235, 91, 98));
+                        Instagram.Width = 116;
+                        Instagram.FontWeight = FontWeights.Medium;
+                        Instagram.HorizontalAlignment = HorizontalAlignment.Left;
+                        Instagram.HorizontalContentAlignment = HorizontalAlignment.Center;
+                        
+                        /*Instagram.Visibility = Visibility.Collapsed;
                         InstaQR.Margin = new Thickness(717, 25, 0, 0);
                         InstaQR.Width = 82;
-                        InstaQR.Height = 82;
+                        InstaQR.Height = 82;*/
                         break;
 
                     case 4:
                         BackGroundImage = ImageBrushFromResources("Vis4.png");
-                        ChangeLabel(VisitSurname, 352, 114, 52, "Formular", true,
+                        ChangeLabel(VisitSurname, 349, 120, 52, "Formular", true,
                             Color.FromRgb(234, 90, 98));
 
-                        ChangeLabel(VisitName, 352, 169, 47, "Formular", false,
+                        ChangeLabel(VisitName, 349, 175, 47, "Formular", false,
                             Color.FromRgb(234, 90, 98), 4);
 
-                        ChangeLabel(VisitSecondName, 352, 214, 47, "Formular", false,
+                        ChangeLabel(VisitSecondName, 349, 220, 47, "Formular", false,
                             Color.FromRgb(234, 90, 98), 4);
 
-                        ChangeLabel(Company, 368, 302, 30, "Railway", false,
+                        ChangeLabel(Company, 365, 310, 30, "Railway", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(Phone, 368, 336, 30, "Railway", false,
+                        ChangeLabel(Phone, 365, 344, 30, "Railway", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(EMail, 368, 369, 30, "Railway", false,
+                        ChangeLabel(EMail, 365, 379, 30, "Railway", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        Instagram.Visibility = Visibility.Collapsed;
+                        ChangeLabel(Instagram, 28, 78, 19.5, "Aveny T", false,
+                            Color.FromRgb(235, 91, 98));
+                        Instagram.Width = 116;
+                        Instagram.FontWeight = FontWeights.Medium;
+                        Instagram.HorizontalAlignment = HorizontalAlignment.Left;
+                        Instagram.HorizontalContentAlignment = HorizontalAlignment.Center;
+
+                        /*Instagram.Visibility = Visibility.Collapsed;
                         InstaQR.Margin = new Thickness(717, 25, 0, 0);
                         InstaQR.Width = 82;
-                        InstaQR.Height = 82;
+                        InstaQR.Height = 82;*/
                         break;
 
                     case 5:
                         BackGroundImage = ImageBrushFromResources("Vis5.png");
-                        ChangeLabel(VisitSurname, 348, 97, 44, "Formular", true,
+                        ChangeLabel(VisitSurname, 348, 104, 44, "Formular", true,
                              Color.FromRgb(235, 91, 98));
 
-                        ChangeLabel(VisitName, 348, 143, 33, "Formular", false,
+                        ChangeLabel(VisitName, 348, 150, 33, "Formular", false,
                             Color.FromRgb(235, 91, 98), 4);
 
-                        ChangeLabel(VisitSecondName, 348, 178, 33, "Formular", false,
+                        ChangeLabel(VisitSecondName, 348, 185, 33, "Formular", false,
                             Color.FromRgb(235, 91, 98), 4);
 
-                        ChangeLabel(Company, 408, 247, 25, "Railway", false,
+                        ChangeLabel(Company, 408, 255, 25, "Formular", false,
                             Color.FromRgb(118, 118, 117), 4);
 
-                        ChangeLabel(Phone, 408, 311, 25, "Railway", false,
+                        ChangeLabel(Phone, 408, 319, 25, "Formular", false,
                             Color.FromRgb(118, 118, 117), 4);
 
-                        ChangeLabel(EMail, 408, 375, 25, "Railway", false,
+                        ChangeLabel(EMail, 408, 383, 25, "Formular", false,
                             Color.FromRgb(118, 118, 117), 4);
 
-                        Instagram.Visibility = Visibility.Collapsed;
+                        ChangeLabel(Instagram, 52, 341, 17.5, "Aveny T", false,
+                            Color.FromRgb(235, 91, 98));
+                        Instagram.Width = 158;
+                        Instagram.FontWeight = FontWeights.Medium;
+                        Instagram.HorizontalAlignment = HorizontalAlignment.Left;
+                        Instagram.HorizontalContentAlignment = HorizontalAlignment.Center;
+
+                        /*Instagram.Visibility = Visibility.Collapsed;
                         InstaQR.Margin = new Thickness(39, 331, 0, 0);
                         InstaQR.Width = 82;
-                        InstaQR.Height = 82;
+                        InstaQR.Height = 82;*/
                         break;
 
                     case 6:
                         BackGroundImage = ImageBrushFromResources("Vis6.png");
-                        ChangeLabel(VisitSurname, 348, 97, 44, "Formular", true,
+                        ChangeLabel(VisitSurname, 348, 104, 44, "Formular", true,
                              Color.FromRgb(254, 254, 254));
 
-                        ChangeLabel(VisitName, 348, 143, 33, "Formular", false,
+                        ChangeLabel(VisitName, 348, 150, 33, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(VisitSecondName, 348, 178, 33, "Formular", false,
+                        ChangeLabel(VisitSecondName, 348, 185, 33, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Company, 408, 247, 25, "Railway", false,
+                        ChangeLabel(Company, 408, 253, 25, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Phone, 408, 311, 25, "Railway", false,
+                        ChangeLabel(Phone, 408, 319, 25, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(EMail, 408, 375, 25, "Railway", false,
+                        ChangeLabel(EMail, 408, 383, 25, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        Instagram.Visibility = Visibility.Collapsed;
+                        ChangeLabel(Instagram, 52, 341, 17.5, "Aveny T", false,
+                            Color.FromRgb(235, 91, 98));
+                        Instagram.Width = 158;
+                        Instagram.FontWeight = FontWeights.Medium;
+                        Instagram.HorizontalAlignment = HorizontalAlignment.Left;
+                        Instagram.HorizontalContentAlignment = HorizontalAlignment.Center;
+
+
+                        /*Instagram.Visibility = Visibility.Collapsed;
                         InstaQR.Margin = new Thickness(39, 331, 0, 0);
                         InstaQR.Width = 82;
-                        InstaQR.Height = 82;
+                        InstaQR.Height = 82;*/
                         break;
 
                     case 7:
                         BackGroundImage = ImageBrushFromResources("Vis7.png");
-                        ChangeLabel(VisitSurname, 30, 115, 50, "Formular", true,
+                        ChangeLabel(VisitSurname, 28, 123, 50, "Formular", true,
                              Color.FromRgb(235, 91, 98));
                         VisitSurname.HorizontalContentAlignment = HorizontalAlignment.Center;
 
-                        ChangeLabel(VisitName, 30, 178, 39, "Formular", false,
+                        ChangeLabel(VisitName, 28, 186, 39, "Formular", false,
                             Color.FromRgb(235, 91, 98), 4);
                         VisitName.HorizontalContentAlignment = HorizontalAlignment.Center;
 
-                        ChangeLabel(Company, 169, 247, 25, "Railway", false,
+                        ChangeLabel(Company, 167, 255, 25, "Formular", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(Phone, 169, 324, 25, "Railway", false,
+                        ChangeLabel(Phone, 167, 332, 25, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(EMail, 169, 373, 25, "Railway", false,
+                        ChangeLabel(EMail, 167, 381, 25, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        Instagram.Visibility = Visibility.Collapsed;
+                        ChangeLabel(Instagram, 675, 383, 19.5, "Aveny T", false,
+                            Color.FromRgb(235, 91, 98));
+                        Instagram.Width = 116;
+                        Instagram.FontWeight = FontWeights.Medium;
+                        Instagram.HorizontalAlignment = HorizontalAlignment.Left;
+                        Instagram.HorizontalContentAlignment = HorizontalAlignment.Center;
+
+
+                        /*Instagram.Visibility = Visibility.Collapsed;
                         InstaQR.Margin = new Thickness(696, 331, 0, 0);
                         InstaQR.Width = 82;
-                        InstaQR.Height = 82;
+                        InstaQR.Height = 82;*/
                         break;
                 }
             }
@@ -296,7 +352,7 @@ namespace Vizitka
         {
             CurLabel.Margin = new Thickness(left, top, 0, 0);
             CurLabel.FontSize = size;
-            CurLabel.FontFamily = new FontFamily("Formular");
+            CurLabel.FontFamily = new FontFamily(FontName);
             CurLabel.FontWeight = Bold ? FontWeights.Bold : FontWeights.Regular;
             CurLabel.Foreground = new SolidColorBrush(TextColor);
             CurLabel.FontStretch = FontStretch.FromOpenTypeStretch(stretch);
@@ -310,7 +366,7 @@ namespace Vizitka
             HorizontalAlignment = HorizontalAlignment.Left;
             VerticalAlignment = VerticalAlignment.Top;
             Width = 822;
-            Height = 457;
+            Height = 471;
 
             Back = new Rectangle()
             {
@@ -373,12 +429,28 @@ namespace Vizitka
             StackPanel NewPanel = new StackPanel()
             {
                 Orientation = Orientation.Vertical,
-                Margin = new Thickness(60,0,0,0)
+                Margin = new Thickness(138,28,138,28)
             };
             StackPanel[] HorisontalPanels = new StackPanel[Height];
             for (int i = 0; i < Height; i++)
             {
-                HorisontalPanels[i] = new StackPanel() { Orientation = Orientation.Horizontal };
+                Thickness thickness;
+                switch (i)
+                {
+                    case 0:
+                        thickness = new Thickness(0);
+                        break;
+                    case 1:
+                        thickness = new Thickness(0,0,0,0);
+                        break;
+                    case 2:
+                        thickness = new Thickness(0);
+                        break;
+                    default:
+                        thickness = new Thickness(0);
+                        break;
+                }
+                HorisontalPanels[i] = new StackPanel() { Orientation = Orientation.Horizontal, Margin = thickness };
                 for (int j = 0; j < Width; j++)
                 {
                     FrameworkElement NewElement = Clone();

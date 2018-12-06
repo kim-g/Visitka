@@ -137,12 +137,14 @@ namespace Vizitka
                     break;
             }
 
+
             Company = PCompany.Text.Trim();
             Job = PJob.Text.Trim();
             Phone = PPhone.Text.Trim();
             EMail = PEMail.Text.Trim();
             Instagram = PIntagram.Text.Trim();
 
+            VisitkaPreview.GlobalStyle = NVis;
             VisitkaPreview.PersonSurname = PersonName[0];
             VisitkaPreview.PersonName = PersonName[1];
             VisitkaPreview.PersonSecondName = PersonName[2];
@@ -151,8 +153,7 @@ namespace Vizitka
                 : Company + Job;
             VisitkaPreview.PersonPhone = Phone;
             VisitkaPreview.PersonEMail = EMail;
-            VisitkaPreview.PersonInstagram = Instagram;
-            VisitkaPreview.GlobalStyle = NVis;
+            VisitkaPreview.PersonInstagram = Instagram;           
             VisitkaPreview.Margin = new Thickness(130, 765, 0, 0);
 
             VirtualKeyboard.Visibility = Visibility.Collapsed;
