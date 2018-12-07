@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Globalization;
 
 namespace Vizitka
 {
@@ -49,7 +50,34 @@ namespace Vizitka
         /// <summary>
         /// Компания
         /// </summary>
-        public string PersonCompany { get { return (string)Company.Content; } set { Company.Content = value; Company.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible; } }
+        public string PersonCompany { get { return (string)Company.Content; } set
+            {
+                Company.Content = value;
+                Company.Visibility = value == "" ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        public void StretchCompany()
+        {
+            double FS = Company.FontSize;
+            FS++;
+            double Wi;
+            do
+            {
+                FS--;
+                TextBlock TB = new TextBlock()
+                {
+                    FontFamily = Company.FontFamily,
+                    FontSize = FS,
+                    FontWeight = Company.FontWeight,
+                    Text = PersonCompany
+                };
+                Wi = GetTextSize(TB).Width;
+            }
+            while (Company.Margin.Left + Wi >= 812);
+            Company.FontSize = FS;
+        }
+
         /// <summary>
         /// Должность / Профессия
         /// </summary>
@@ -337,6 +365,8 @@ namespace Vizitka
                         InstaQR.Height = 82;*/
                         break;
                 }
+
+                Company.HorizontalAlignment = HorizontalAlignment.Left;
             }
         }
 
@@ -385,6 +415,10 @@ namespace Vizitka
             Children.Add(VisitSecondName);
 
             Company = new Label();
+            Company.SizeChanged += (object Sender, SizeChangedEventArgs EA) =>
+            {
+                StretchCompany();
+            };
             Children.Add(Company);
 
             Job = new Label();
@@ -407,11 +441,13 @@ namespace Vizitka
             Children.Add(InstaQR);
 
             GlobalStyle = VisitStyle;
+
+            StretchCompany();
         }
 
         public Visit Clone()
         {
-            return new Visit(this.GlobalStyle)
+            Visit V1 = new Visit(this.GlobalStyle)
             {
                 PersonSurname = this.PersonSurname,
                 PersonName = this.PersonName,
@@ -422,6 +458,19 @@ namespace Vizitka
                 PersonEMail = this.PersonEMail,
                 PersonInstagram = this.PersonInstagram
             };
+            V1.StretchCompany();
+            return V1;
+        }
+
+        public static Size GetTextSize(TextBlock textBlock)
+        {
+            FormattedText ft = new FormattedText(textBlock.Text, CultureInfo.CurrentUICulture, textBlock.FlowDirection,
+                                                 new Typeface(textBlock.FontFamily, textBlock.FontStyle,
+                                                              textBlock.FontWeight, textBlock.FontStretch),
+                                                 textBlock.FontSize, textBlock.Foreground
+                );
+
+            return new Size(ft.Width, ft.Height);
         }
 
         public StackPanel MultileObject(int Width, int Height)

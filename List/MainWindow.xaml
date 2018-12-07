@@ -14,6 +14,7 @@
         <ListBox x:Name="VisitsListBox" Margin="10" MouseDoubleClick="VisitsListBox_MouseDoubleClick"/>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,10" Orientation="Horizontal">
             <Button x:Name="PrintButton" Content="Напечатать" FontSize="20" Padding="10,2,10,5" Click="PrintButton_Click"/>
+            <Button x:Name="ExportButton" Content="Вывести данные в Excel" FontSize="20" Padding="10,2,10,5" Margin="20,0,0,0" Click="ExportButton_Click"/>
             <Button x:Name="CloseButton" Content="Закрыть" FontSize="20" Padding="10,2,10,5" Margin="20,0,0,0" Click="CloseButton_Click"/>
         </StackPanel>
     </Grid>

@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Vizitka;
+using Excel = Microsoft.Office.Interop.Excel;
+using SWF = Microsoft.Win32;
 
 namespace List
 {
@@ -62,6 +55,53 @@ namespace List
         {
             if (MessageBox.Show("Закрыть список визиток?", "Закрытие", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 this.Close();
+        }
+
+        private void ExportButton_Click(object sender, RoutedEventArgs e)
+        {
+            SWF.SaveFileDialog saveDialog = new SWF.SaveFileDialog();
+            saveDialog.AddExtension = true;
+            saveDialog.Filter = "(*.xlsx)|*.xlsx";
+
+            if (saveDialog.ShowDialog() == false)
+                return;
+
+            //Объявляем приложение
+            Excel.Application ex = new Excel.Application();
+            //Количество листов в рабочей книге
+            ex.SheetsInNewWorkbook = 1;
+            //Добавить рабочую книгу
+            Excel.Workbook workBook = ex.Workbooks.Add(Type.Missing);
+            //Отключить отображение окон с сообщениями
+            ex.DisplayAlerts = false;
+            //Получаем первый лист документа (счет начинается с 1)
+            Excel.Worksheet sheet = (Excel.Worksheet)ex.Worksheets.get_Item(1);
+            //Название листа (вкладки снизу)
+            sheet.Name = "Список визиток";
+            //Пример заполнения ячеек
+            sheet.Cells[1, 1] = $"Номер";
+            sheet.Cells[1, 2] = $"Тип визитки";
+            sheet.Cells[1, 3] = $"Фамилия";
+            sheet.Cells[1, 4] = $"Имя";
+            sheet.Cells[1, 5] = $"Отчество";
+            sheet.Cells[1, 6] = $"Компания";
+            sheet.Cells[1, 7] = $"Должность";
+            sheet.Cells[1, 8] = $"Телефон";
+            sheet.Cells[1, 9] = $"Почта";
+            sheet.Cells[1, 10] = $"Instagram";
+
+            DataTable DT = DB.ReadTable("SELECT `id`, `type`, `surname`, `name`, `second_name`, "+
+"`company`, `job`, `phone`, `email`, `instagram` FROM `Visits`;");
+
+            for (int i = 0; i < DT.Rows.Count; i++)
+            {
+                for (int j=0; j<10; j++)
+                sheet.Cells[i+2, j+1] = DT.Rows[i].ItemArray[j];
+            }
+
+            ex.Application.ActiveWorkbook.SaveAs(saveDialog.FileName, Type.Missing,
+  Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlShared,
+  Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
         }
     }
 }

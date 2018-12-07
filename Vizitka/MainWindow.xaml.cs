@@ -151,6 +151,7 @@ namespace Vizitka
             VisitkaPreview.PersonCompany = Company!="" && Job!="" 
                 ? Company + ", " + Job
                 : Company + Job;
+            VisitkaPreview.StretchCompany();
             VisitkaPreview.PersonPhone = Phone;
             VisitkaPreview.PersonEMail = EMail;
             VisitkaPreview.PersonInstagram = Instagram;           
@@ -159,6 +160,7 @@ namespace Vizitka
             VirtualKeyboard.Visibility = Visibility.Collapsed;
             Slide3.Visibility = Visibility.Collapsed;
             Slide4.Visibility = Visibility.Visible;
+            VisitkaPreview.StretchCompany();
         }
 
         /// <summary>
