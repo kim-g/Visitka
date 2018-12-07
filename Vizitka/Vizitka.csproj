@@ -131,6 +131,7 @@
     <Resource Include="formular-mono.otf" />
     <Resource Include="formular-regularitalic.otf" />
     <Resource Include="Aveny T Medium.ttf" />
+    <Resource Include="Instagram-Medium.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

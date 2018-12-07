@@ -7,5 +7,6 @@
         <FontFamily x:Key="Formular">pack://application:,,,/#formular</FontFamily>
         <FontFamily x:Key="Railway">pack://application:,,,/#Raleway</FontFamily>
         <FontFamily x:Key="Aveny T">pack://application:,,,/#Aveny T</FontFamily>
+        <FontFamily x:Key="Instagram">pack://application:,,,/#Instagram</FontFamily>
     </Application.Resources>
 </Application>
