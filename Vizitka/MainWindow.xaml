@@ -142,5 +142,6 @@
         </Grid>
 
         <Button x:Name="CloseAll" Margin="969,23,0,0" Width="84" Height="84" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource StandartBtn}" Click="Slide5_OK_Click" />
+        <Button x:Name="ListShow" Margin="23,23,0,0" Width="84" Height="84" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource StandartBtn}" Click="ListShow_Click" />
     </Grid>
 </Window>

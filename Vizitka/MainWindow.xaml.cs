@@ -244,5 +244,10 @@ namespace Vizitka
             PIntagram.Text = "";
             Slide1.Visibility = Visibility.Visible;
         }
+
+        private void ListShow_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("List.exe");
+        }
     }
 }
