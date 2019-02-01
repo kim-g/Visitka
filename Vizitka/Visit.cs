@@ -478,7 +478,7 @@ namespace Vizitka
             StackPanel NewPanel = new StackPanel()
             {
                 Orientation = Orientation.Vertical,
-                Margin = new Thickness(138,28,138,28)
+                Margin = new Thickness(0) //new Thickness(138,28,138,28)
             };
             StackPanel[] HorisontalPanels = new StackPanel[Height];
             for (int i = 0; i < Height; i++)

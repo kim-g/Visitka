@@ -43,7 +43,7 @@ namespace List
 
             string[] NumStr = VisitsListBox.SelectedValue.ToString().Split('-');
             Visit V1 = DB.GetVisit(Convert.ToInt32(NumStr[0].Trim()));
-            WPF_Printer.Print(V1.MultileObject(3, 4));
+            WPF_Printer.Print(V1.MultileObject(2, 3));
         }
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)

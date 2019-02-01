@@ -15,8 +15,9 @@ namespace Vizitka
     {
         public static void Print(FrameworkElement Element)
         {
-            var dlg = new PrintDialog();
+            PrintDialog dlg = new PrintDialog();
             dlg.PrintTicket.PageOrientation = System.Printing.PageOrientation.Landscape;
+            dlg.PrintTicket.PageMediaSize = new System.Printing.PageMediaSize(System.Printing.PageMediaSizeName.ISOA5) ;
             /*var result = dlg.ShowDialog();
             if (result == null || !(bool)result)
                 return;*/
