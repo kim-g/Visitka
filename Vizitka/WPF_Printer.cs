@@ -16,7 +16,7 @@ namespace Vizitka
         public static void Print(FrameworkElement Element)
         {
             var dlg = new PrintDialog();
-            dlg.PrintTicket.PageOrientation = System.Printing.PageOrientation.Landscape;
+            dlg.PrintTicket.PageOrientation = System.Printing.PageOrientation.Portrait;
             /*var result = dlg.ShowDialog();
             if (result == null || !(bool)result)
                 return;*/

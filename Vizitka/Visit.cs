@@ -154,7 +154,7 @@ namespace Vizitka
                         ChangeLabel(EMail, 419, 386, 30, "Railway", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Instagram, 95, 208, 26.5, "InstagramNametag", false,
+                        ChangeLabel(Instagram, 97, 208, 26.5, "InstagramNametag", false,
                             Color.FromRgb(235, 91, 98));
                         Instagram.Width = 157;
                         Instagram.FontWeight = FontWeights.Medium;
@@ -186,7 +186,7 @@ namespace Vizitka
                         ChangeLabel(EMail, 419, 386, 30, "Railway", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(Instagram, 95, 208, 26.5, "InstagramNametag", false,
+                        ChangeLabel(Instagram, 97, 208, 26.5, "InstagramNametag", false,
                             Color.FromRgb(235, 91, 98));
                         Instagram.Width = 157;
                         Instagram.FontWeight = FontWeights.Medium;
@@ -201,25 +201,25 @@ namespace Vizitka
 
                     case 3:
                         BackGroundImage = ImageBrushFromResources("Vis3.png");
-                        ChangeLabel(VisitSurname, 349, 120, 52, "Formular", true,
+                        ChangeLabel(VisitSurname, 356.5, 120, 52, "Formular", true,
                             Color.FromRgb(254, 254, 254));
 
-                        ChangeLabel(VisitName, 349, 175, 47, "Formular", false,
+                        ChangeLabel(VisitName, 356.5, 175, 47, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(VisitSecondName, 349, 220, 47, "Formular", false,
+                        ChangeLabel(VisitSecondName, 356.5, 220, 47, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Company, 365, 310, 30, "Railway", false,
+                        ChangeLabel(Company, 372.5, 310, 30, "Railway", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Phone, 365, 344, 30, "Railway", false,
+                        ChangeLabel(Phone, 372.5, 344, 30, "Railway", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(EMail, 365, 379, 30, "Railway", false,
+                        ChangeLabel(EMail, 372.5, 379, 30, "Railway", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Instagram, 28, 78, 19.5, "InstagramNametag", false,
+                        ChangeLabel(Instagram, 29, 78, 19.5, "InstagramNametag", false,
                             Color.FromRgb(235, 91, 98));
                         Instagram.Width = 116;
                         Instagram.FontWeight = FontWeights.Medium;
@@ -234,25 +234,25 @@ namespace Vizitka
 
                     case 4:
                         BackGroundImage = ImageBrushFromResources("Vis4.png");
-                        ChangeLabel(VisitSurname, 349, 120, 52, "Formular", true,
+                        ChangeLabel(VisitSurname, 356.5, 120, 52, "Formular", true,
                             Color.FromRgb(234, 90, 98));
 
-                        ChangeLabel(VisitName, 349, 175, 47, "Formular", false,
+                        ChangeLabel(VisitName, 356.5, 175, 47, "Formular", false,
                             Color.FromRgb(234, 90, 98), 4);
 
-                        ChangeLabel(VisitSecondName, 349, 220, 47, "Formular", false,
+                        ChangeLabel(VisitSecondName, 356.5, 220, 47, "Formular", false,
                             Color.FromRgb(234, 90, 98), 4);
 
-                        ChangeLabel(Company, 365, 310, 30, "Railway", false,
+                        ChangeLabel(Company, 372.5, 310, 30, "Railway", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(Phone, 365, 344, 30, "Railway", false,
+                        ChangeLabel(Phone, 372.5, 344, 30, "Railway", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(EMail, 365, 379, 30, "Railway", false,
+                        ChangeLabel(EMail, 372.5, 379, 30, "Railway", false,
                             Color.FromRgb(114, 114, 113), 4);
 
-                        ChangeLabel(Instagram, 28, 78, 19.5, "InstagramNametag", false,
+                        ChangeLabel(Instagram, 29, 78, 19.5, "InstagramNametag", false,
                             Color.FromRgb(235, 91, 98));
                         Instagram.Width = 116;
                         Instagram.FontWeight = FontWeights.Medium;
@@ -285,7 +285,7 @@ namespace Vizitka
                         ChangeLabel(EMail, 408, 383, 25, "Formular", false,
                             Color.FromRgb(118, 118, 117), 4);
 
-                        ChangeLabel(Instagram, 52, 341, 17.5, "InstagramNametag", false,
+                        ChangeLabel(Instagram, 53, 341, 17.5, "InstagramNametag", false,
                             Color.FromRgb(235, 91, 98));
                         Instagram.Width = 158;
                         Instagram.FontWeight = FontWeights.Medium;
@@ -318,7 +318,7 @@ namespace Vizitka
                         ChangeLabel(EMail, 408, 383, 25, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Instagram, 52, 341, 17.5, "InstagramNametag", false,
+                        ChangeLabel(Instagram, 53, 341, 17.5, "InstagramNametag", false,
                             Color.FromRgb(235, 91, 98));
                         Instagram.Width = 158;
                         Instagram.FontWeight = FontWeights.Medium;
@@ -351,7 +351,7 @@ namespace Vizitka
                         ChangeLabel(EMail, 167, 381, 25, "Formular", false,
                             Color.FromRgb(254, 254, 254), 4);
 
-                        ChangeLabel(Instagram, 675, 383, 19.5, "InstagramNametag", false,
+                        ChangeLabel(Instagram, 689.7, 383, 19.5, "InstagramNametag", false,
                             Color.FromRgb(235, 91, 98));
                         Instagram.Width = 116;
                         Instagram.FontWeight = FontWeights.Medium;
@@ -395,7 +395,7 @@ namespace Vizitka
         {
             HorizontalAlignment = HorizontalAlignment.Left;
             VerticalAlignment = VerticalAlignment.Top;
-            Width = 822;
+            Width = 840;
             Height = 471;
 
             Back = new Rectangle()
@@ -478,7 +478,7 @@ namespace Vizitka
             StackPanel NewPanel = new StackPanel()
             {
                 Orientation = Orientation.Vertical,
-                Margin = new Thickness(138,28,138,28)
+                Margin = new Thickness(146,224,146,211)
             };
             StackPanel[] HorisontalPanels = new StackPanel[Height];
             for (int i = 0; i < Height; i++)
